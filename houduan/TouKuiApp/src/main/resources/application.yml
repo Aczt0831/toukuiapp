@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://123.57.186.64:3306/toukuiinfo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/toukuiinfo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+
+    username: root
+    password: ****
+  # 添加JSON序列化配置
+  mvc:
+    converters:
+      preferred-json-mapper: jackson
+  jackson:
+    serialization:
+      indent-output: true
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # 添加MyBatis配置，支持驼峰命名和下划线命名的映射
+  mybatis:
+    configuration:
+      map-underscore-to-camel-case: true
+    # 保留XML配置支持（ProductMapper使用XML）
+    mapper-locations: classpath:mapper/*.xml
+    # 支持注解方式的Mapper（MarkersMapper等使用注解）
+    type-aliases-package: com.Toukui.pojo
+
+server:
+  port: 8080
+#  address: 192.168.133.46
+#  address: 10.223.143.49
+
+# JWT 配置
+jwt:
+  secret: ****  # 至少32位的密钥
+  expiration: 86400000  # 24小时，单位：毫秒

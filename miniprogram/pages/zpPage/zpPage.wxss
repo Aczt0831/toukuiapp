@@ -1,0 +1,584 @@
+/* 全局样式 */
+page {
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.All {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+}
+
+/* 用户作品列表样式 */
+.user-works-container {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 空作品状态 */
+.empty-works {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.6;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+  font-weight: 500;
+}
+
+.empty-hint {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 作品列表 */
+.works-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+/* 作品项 */
+.work-item {
+  background-color: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.work-item:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* 作品图片容器 */
+.work-image-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.work-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 作品信息 */
+.work-info {
+  padding: 20rpx;
+}
+
+.work-title {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.work-stats {
+  display: flex;
+  gap: 30rpx;
+  margin-bottom: 12rpx;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.stat-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.stat-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.work-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 顶部导航栏 */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.fanhui {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: -20rpx;
+}
+
+.nav-right {
+  width: 80rpx;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  padding-top: 100rpx;
+}
+
+.loading-text {
+  font-size: 30rpx;
+  color: #666666;
+  margin-top: 20rpx;
+}
+
+/* 错误提示 */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  padding-top: 100rpx;
+  text-align: center;
+}
+
+.error-icon {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 30rpx;
+}
+
+.error-text {
+  font-size: 32rpx;
+  color: #666666;
+  line-height: 48rpx;
+  padding: 0 60rpx;
+  margin-bottom: 40rpx;
+}
+
+.retry-btn {
+  padding: 20rpx 60rpx;
+  background-color: #1989fa;
+  color: #ffffff;
+  font-size: 32rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 2rpx 10rpx rgba(25, 137, 250, 0.3);
+}
+
+/* 主内容区域 */
+.content-container {
+  padding-top: 120rpx;
+}
+
+/* 用户信息 */
+.userBox {
+  width: 100%;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.userBoxItem {
+  display: flex;
+  align-items: center;
+}
+
+.userTxBox {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2rpx solid #f0f0f0;
+}
+
+.tximg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.username {
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* 作品图片 */
+.ImgBox {
+  width: 100%;
+  height: 700rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+  position: relative;
+  overflow: hidden;
+}
+
+.zpImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* 作品信息 */
+.TCT {
+  width: 94%;
+  margin: 30rpx auto;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.textBox {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333333;
+  line-height: 52rpx;
+  margin-bottom: 20rpx;
+}
+
+.contentBox {
+  font-size: 32rpx;
+  color: #666666;
+  line-height: 48rpx;
+  margin-bottom: 20rpx;
+}
+
+.Time {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* 评论区 */
+.plBox {
+  width: 94%;
+  margin: 0 auto 30rpx;
+}
+
+.plText {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 30rpx;
+}
+
+/* 空评论状态 */
+.noplBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  text-align: center;
+}
+
+.noplimg {
+  width: 180rpx;
+  height: 180rpx;
+  margin-bottom: 20rpx;
+}
+
+.nopl-text {
+  font-size: 30rpx;
+  color: #999999;
+}
+
+/* 评论列表 */
+.yesplBox {
+  width: 100%;
+}
+
+.plItem {
+  width: 100%;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  position: relative;
+}
+
+.txNameBox {
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+
+.txitemBox {
+  display: flex;
+  align-items: center;
+}
+
+.pltxbox {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1rpx solid #f0f0f0;
+}
+
+.pltximg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.plName {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-left: 16rpx;
+  flex: 1;
+}
+
+.plTime {
+  font-size: 24rpx;
+  color: #999999;
+  margin-left: 20rpx;
+}
+
+.plcontent {
+  width: 100%;
+  font-size: 30rpx;
+  color: #666666;
+  line-height: 44rpx;
+  padding-left: 76rpx;
+  box-sizing: border-box;
+}
+
+/* 底部交互栏 */
+.PostPl {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #ffffff;
+  border-top: 1rpx solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.plinput {
+  background-color: #f5f5f5;
+  width: 60%;
+  height: 70rpx;
+  line-height: 70rpx;
+  box-sizing: border-box;
+  padding-left: 30rpx;
+  color: #999999;
+  font-size: 28rpx;
+  border-radius: 35rpx;
+}
+
+.bottomIconBox {
+  display: flex;
+  align-items: center;
+  height: 70rpx;
+  line-height: 90rpx;
+}
+
+.bottomIcon {
+  font-size: 44rpx;
+  color: #666666;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.bottomIcon2 {
+  margin-left: 50rpx;
+}
+
+/* 评论输入弹窗 */
+.bottomBox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+}
+
+.bottomBoxTopBox {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  height: calc(100vh - 350rpx);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.PostPl_input {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 350rpx;
+  width: 100%;
+  border-radius: 30rpx 30rpx 0 0;
+  background-color: #f8f8f8;
+  padding: 30rpx;
+  box-sizing: border-box;
+  animation: slideUp 0.3s ease-in-out;
+}
+
+.plinputtext {
+  width: 100%;
+  height: 200rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 40rpx;
+}
+
+.postPlBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.postBtn {
+  padding: 20rpx 60rpx;
+  background-color: #1989fa;
+  color: #ffffff;
+  font-size: 28rpx;
+  border-radius: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(25, 137, 250, 0.3);
+}
+
+.postBtn-disabled {
+  padding: 20rpx 60rpx;
+  background-color: #dcdfe6;
+  color: #ffffff;
+  font-size: 28rpx;
+  border-radius: 30rpx;
+}
+
+/* 空数据提示样式 */
+.empty-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+  text-align: center;
+}
+
+.empty-img {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* 响应式适配 */
+@media screen and (max-height: 600px) {
+  .ImgBox {
+    height: 600rpx;
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .ImgBox {
+    height: 800rpx;
+  }
+}
+
+/* 安全区域适配 */
+@media screen and (device-width: 375px) and (device-height: 812px) {
+  .navbar {
+    padding-top: 20rpx;
+    height: 120rpx;
+  }
+  
+  .content-container {
+    padding-top: 140rpx;
+  }
+}

@@ -1,0 +1,103 @@
+<view class="page-container">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="header-title">通知设置</text>
+  </view>
+  
+  <!-- 设置列表 -->
+  <view class="settings-section">
+    <!-- 通知总开关 -->
+    <view class="settings-group">
+      <view class="setting-item">
+        <view class="setting-title">接收通知</view>
+        <van-switch 
+          size="36" 
+          checked="{{notificationEnabled}}" 
+          active-color="#1aad19" 
+          bind:change="onNotificationToggle"
+        />
+      </view>
+    </view>
+    
+    <!-- 通知类型设置 -->
+    <view class="settings-group" wx:if="{{notificationEnabled}}">
+      <view class="setting-item">
+        <view class="setting-title">头盔状态提醒</view>
+        <van-switch 
+          size="36" 
+          checked="{{helmetStatusEnabled}}" 
+          active-color="#1aad19" 
+          bind:change="onHelmetStatusToggle"
+        />
+      </view>
+      
+      <view class="setting-item">
+        <view class="setting-title">安全警告</view>
+        <van-switch 
+          size="36" 
+          checked="{{safetyAlertsEnabled}}" 
+          active-color="#1aad19" 
+          bind:change="onSafetyAlertsToggle"
+        />
+      </view>
+      
+      <view class="setting-item">
+        <view class="setting-title">维护提醒</view>
+        <van-switch 
+          size="36" 
+          checked="{{maintenanceEnabled}}" 
+          active-color="#1aad19" 
+          bind:change="onMaintenanceToggle"
+        />
+      </view>
+      
+      <view class="setting-item">
+        <view class="setting-title">消息通知</view>
+        <van-switch 
+          size="36" 
+          checked="{{messagesEnabled}}" 
+          active-color="#1aad19" 
+          bind:change="onMessagesToggle"
+        />
+      </view>
+      
+      <view class="setting-item">
+        <view class="setting-title">活动通知</view>
+        <van-switch 
+          size="36" 
+          checked="{{activitiesEnabled}}" 
+          active-color="#1aad19" 
+          bind:change="onActivitiesToggle"
+        />
+      </view>
+    </view>
+    
+    <!-- 通知方式设置 -->
+    <view class="settings-group" wx:if="{{notificationEnabled}}">
+      <view class="setting-item">
+        <view class="setting-title">声音提醒</view>
+        <van-switch 
+          size="36" 
+          checked="{{soundEnabled}}" 
+          active-color="#1aad19" 
+          bind:change="onSoundToggle"
+        />
+      </view>
+      
+      <view class="setting-item">
+        <view class="setting-title">振动提醒</view>
+        <van-switch 
+          size="36" 
+          checked="{{vibrationEnabled}}" 
+          active-color="#1aad19" 
+          bind:change="onVibrationToggle"
+        />
+      </view>
+    </view>
+  </view>
+  
+  <!-- 提示信息 -->
+  <view class="tip-section" wx:if="{{!notificationEnabled}}">
+    <text class="tip-text">开启通知后，您将及时收到头盔状态更新和安全提醒</text>
+  </view>
+</view>

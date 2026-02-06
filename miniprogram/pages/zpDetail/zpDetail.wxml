@@ -1,0 +1,138 @@
+<!-- 作品详情页面 -->
+<view class="detail-container">
+  <!-- 加载中状态 - 数据请求过程中显示 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <text class="loading-text">加载中...</text>
+  </view>
+  
+  <!-- 主内容区域 - 数据加载完成且有数据时显示 -->
+  <view class="content" wx:if="{{!loading && workDetail}}">
+    <!-- 作者信息区 -->
+    <view class="user-info">
+      <!-- 头像显示，有用户头像就显示用户头像，没有就显示默认头像 -->
+      <image class="avatar" 
+        src="{{ workDetail.usertx? 'data:image/jpeg;base64,' + workDetail.usertx: '../../static/images/userempty.png' }}" 
+        mode="aspectFill"></image>
+      <view class="user-details">
+        <text class="username">{{workDetail.username}}</text>
+        <text class="post-time">{{workDetail.zpsj || workDetail.zptime}}</text> <!-- 兼容不同的时间字段名 -->
+      </view>
+    </view>
+    
+    <!-- 作品主体内容 -->
+    <view class="work-content">
+      <!-- 作品标题 -->
+      <text class="work-title">{{workDetail.zptitle}}</text>
+      <!-- 作品正文 -->
+      <text class="work-text">{{workDetail.zpcontent}}</text>
+      
+      <!-- 作品图片区域 -->
+      <view class="image-container">
+        <!-- 正常图片显示 -->
+        <image 
+          class="work-image" 
+          wx:if="{{workDetail.zpimg && !imageError}}"
+          src="{{workDetail.zpimg}}" 
+          mode="aspectFill"
+          lazy-load="true"
+          binderror="handleImageError"
+          bindload="handleImageLoad"
+          show-menu-by-longpress="true"
+        ></image>
+        
+        <!-- 图片加载状态 -->
+        <view class="image-loading" wx:if="{{imageLoading}}">
+          <text class="image-error-text">图片加载中...</text>
+        </view>
+        
+        <!-- 图片错误状态 -->
+        <view class="image-error" wx:if="{{imageError || !workDetail.zpimg}}">
+          <text class="image-error-text">{{imageError ? '图片加载失败' : '暂无图片'}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 互动操作栏 -->
+    <view class="interaction-bar">
+      <!-- 点赞按钮 -->
+      <view class="interaction-item" bindtap="handleDz">
+        <image 
+          class="interaction-icon {{dzList.includes(workDetail.id.toString()) ? 'active' : ''}}"
+          src="../../static/images/dz.png"
+          mode="aspectFit"
+        ></image>
+        <text class="interaction-text">{{workDetail.zpdz || 0}} 赞</text>
+      </view>
+      
+      <!-- 评论按钮 -->
+      <view class="interaction-item" bindtap="handleCommentClick">
+        <image 
+          class="interaction-icon"
+          src="../../static/images/pl.png"
+          mode="aspectFit"
+        ></image>
+        <text class="interaction-text">{{workDetail.pl || 0}} 评论</text>
+      </view>
+    </view>
+    
+    <!-- 评论列表 -->
+    <view class="comments-section">
+      <view class="comments-header">
+        <text class="comments-title">评论</text>
+        <text class="comments-count">({{comments.length}})</text>
+      </view>
+      
+      <view class="comments-list">
+        <view class="comment-item" wx:for="{{comments}}" wx:key="id">
+          <image class="comment-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+          <view class="comment-content">
+            <view class="comment-header">
+              <text class="comment-username">{{item.username}}</text>
+              <text class="comment-time">{{item.createTime}}</text>
+            </view>
+            <text class="comment-text">{{item.content}}</text>
+            <text class="comment-source" wx:if="{{item.local}}">（本地）</text>
+          </view>
+        </view>
+        
+        <!-- 空状态 -->
+        <view class="empty-comments" wx:if="{{comments.length === 0}}">
+          <text>暂无评论，快来发表第一条评论吧~</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 错误提示区域 - 数据加载失败或作品不存在时显示 -->
+  <view class="error-state" wx:if="{{!loading && !workDetail}}">
+    <text class="error-text">作品不存在或已删除</text>
+    <button class="back-btn" bindtap="backToFind">返回列表</button>
+  </view>
+  
+  <!-- 评论输入框弹窗 -->
+  <view class="comment-modal" wx:if="{{showCommentInput}}">
+    <view class="comment-overlay" bindtap="closeCommentInput"></view>
+    <view class="comment-input-container">
+      <view class="comment-input-header">
+        <text>发表评论</text>
+        <text class="close-btn" bindtap="closeCommentInput">×</text>
+      </view>
+      <textarea 
+        class="comment-textarea" 
+        placeholder="请输入评论内容" 
+        value="{{commentContent}}" 
+        bindinput="onCommentInput"
+        auto-focus
+      ></textarea>
+      <view class="comment-input-footer">
+        <button 
+          class="send-btn" 
+          bindtap="sendComment"
+          disabled="{{!commentContent.trim()}}"
+        >
+          发送
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

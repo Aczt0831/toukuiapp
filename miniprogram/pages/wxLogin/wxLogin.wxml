@@ -1,0 +1,6 @@
+<view class="container"> 
+  <button class="wechat-login-btn" bindtap="handleWechatLogin">
+    <image src="../../static/images/wx.png" mode="aspectFit" class="btn-icon"></image>
+    <text class="btn-text">微信登录</text>
+  </button>
+</view>

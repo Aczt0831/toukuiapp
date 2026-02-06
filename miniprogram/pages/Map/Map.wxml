@@ -1,0 +1,234 @@
+<!-- index.wxml -->
+
+<view class="container">
+  <map id="map" 
+  latitude="{{latitude}}" 
+  longitude="{{longitude}}" 
+  show-location="{{true}}" 
+  markers="{{markers}}"
+  scale="{{mapsize}}"
+  bindmarkertap="markerTap"
+  polyline="{{polyline}}"
+  style="width: 100%; height: 100vh;"
+  show-compass="{{true}}"
+  enable-zoom="{{true}}"
+  enable-scroll="{{true}}"
+  enable-rotate="{{true}}"
+  ></map>
+
+
+  <view wx:if="{{ show }}"  class="popupBox">
+    <view class="popup">
+      <!-- 弹出框关闭按钮 -->
+      <van-icon name="close" class="gb_Box" bind:tap="closeMarkers" />
+      <scroll-view scroll-y scrollbar-y="false" style="width: 100%;height: 100%;">
+        <view wx:for="{{wishLocation}}" wx:key="id" data-id="{{item.id}}" class="popupBoxItem">
+          <view class="popup_Logo">
+            <image src="../../static/images/arrow.png" mode="widthFix"/>
+          </view>
+          <view>{{item.localname}}</view>
+          <van-icon class="deleteMarker" bind:tap="deleteMarker" data-id="{{item.id}}" name="cross" />
+        </view>
+        <view style="width: 100%;height: 20rpx;"></view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view wx:if="{{ footshow }}"  class="popupBox">
+    <view class="popup">
+      <!-- 弹出框关闭按钮 -->
+      <van-icon name="close" class="gb_Box" bind:tap="closeFoots" />
+      <scroll-view scroll-y scrollbar-y="false" style="width: 100%;height: 100%;">
+        <view wx:for="{{foots}}" wx:key="id" data-id="{{item.id}}" class="popupBoxItem">
+          <view class="popup_Logo">
+            <image src="../../static/images/wz.png" mode="widthFix"/>
+          </view>
+          <view>{{item.localname}}</view>
+          <van-icon class="deleteMarker" bind:tap="deleteMarker" data-id="{{item.id}}" name="cross" />
+        </view>
+        <view style="width: 100%;height: 20rpx;"></view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <van-dialog style="z-index: 9999;" id="van-dialog" />
+
+
+  <!-- 底部搜索栏 -->
+  <view class="Search_Box">
+    <!-- 地图控制按钮组 -->
+    <view class="map-controls">
+      <view class="dwBox2 dwBox5" bind:tap="reverseGeocoding">
+        <image src="../../static/images/addz.png" mode="widthFix"/>
+      </view>
+
+      <view class="dwBox2 dwBox4" bind:tap="minusScale">
+        <view class="dwBox2icon">—</view>
+      </view>
+
+      <view class="dwBox2 dwBox3" bind:tap="addScale">
+        <van-icon name="plus" class="dwBox2icon"/>
+      </view>
+
+      <view class="dwBox" bind:tap="getuserlocal">
+        <image src="../../static/images/dw.png" mode="widthFix"/>
+      </view>
+
+      <view class="dwBox2" bind:tap="cancleAdd" wx:if="{{isLocal}}">
+        <van-icon name="cross" class="dwBox2icon"/>
+      </view>
+    </view>
+  
+    <!-- 无内容显示的搜索框 -->
+    <view class="Search_InputBox" bindtap="goSearch" wx:if="{{!isLocal}}">
+      <view class="SsImgBox">
+        <image src="../../static/images/ss.png" mode="widthFix"/>
+      </view>
+      <view class="SsContentBox" wx:if="{{SearchValue == '' || SearchValue == null }}">添加心愿地点吧~</view>
+      <view class="SsContentBox" wx:else style="color: var(--text-primary);">{{SearchValue}}</view>
+    </view>
+
+    <!-- 有内容显示的搜索框 -->
+    <view class="Search_InputBox2_Big" wx:else>
+      <view class="Search_InputBox2" bindtap="goSearch">
+        <view class="SsImgBox">
+          <image src="../../static/images/ss.png" mode="widthFix"/>
+        </view>
+        <view class="SsContentBox" style="color: var(--text-primary);">{{SearchValue}}</view>
+      </view>
+      <view class="Search_Box_gnBox_btn" bind:tap="addMarkers">
+        <view class="Search_Box_gnBox_btn_icon">添加</view>
+      </view>
+    </view>
+    
+    <!-- <view class="Search_Box_gnBox">
+      <van-button class="Search_Box_gnBox_btn2" bind:tap="openMarkers"  round block type="info">查看</van-button>
+    </view> -->
+    <view class="Search_Box_bottomBox">
+      <view class="Search_Box_bottomBox_item" bind:tap="openMarkers">
+        <view class="Search_Box_bottomBox_item_content">
+          <view class="Search_Box_bottomBox_item_Title">{{wishLocationNum}}</view>
+          <view class="Search_Box_bottomBox_item_text">心愿地点</view>
+        </view>
+      </view>
+      <view class="Search_Box_bottomBox_item" bind:tap="openFoots">
+        <view class="Search_Box_bottomBox_item_content">
+          <view class="Search_Box_bottomBox_item_Title">{{footsNum}}</view>
+          <view class="Search_Box_bottomBox_item_text">已完成心愿</view>
+        </view>
+      </view>
+      <view class="Search_Box_bottomBox_item {{isRoutePlanning ? 'route-active' : ''}}" bind:tap="switchToRoutePlanning">
+        <view class="Search_Box_bottomBox_item_content">
+          <view class="Search_Box_bottomBox_item_Title">{{isRoutePlanning ? '退出' : '路线'}}</view>
+          <view class="Search_Box_bottomBox_item_text">{{isRoutePlanning ? '规划' : '规划'}}</view>
+        </view>
+      </view>
+    </view>
+  
+  </view>
+
+  <van-action-sheet
+    show="{{ show2 }}"
+    actions="{{ actions }}"
+    bind:close="onClose"
+    bind:select="onSelect"
+  />
+  <van-action-sheet
+    show="{{ show3 }}"
+    actions="{{ actions3 }}"
+    bind:close="onClose3"
+    bind:select="onSelect3"
+  />
+  
+  <view class="Search_Page" wx:if="{{isSearch}}">
+
+    <!-- 顶部搜索框+标题 -->
+    <view class="Sp_TopBox">
+
+      <!-- 顶部标题 -->
+      <view class="Sp_TopBox_top">
+        <view class="Sp_TopBox_top_title">
+          <view class="fh_Icon" bindtap="goBack">
+            <image src="../../static/images/back.png" mode="widthFix"/>
+          </view>
+          <view class="fh_text">选择心愿地点</view>
+        </view>
+      </view>
+
+      <!-- 搜索框 -->
+      <view class="Sp_SearchBox_All">
+        <input placeholder="输入地名关键字" focus="{{focus}}" value="{{SearchValue}}" bindinput="onInput" class="search-bar"/>
+        <view class="Sp_AddBtn" bind:tap="cancleAdd">取消</view>
+      </view>
+    </view>
+    
+    <!-- 显示搜索结果 -->
+      <view class="Sp_ResultBox">
+        <scroll-view scroll-y style="height: calc(100vh - 200rpx);width: 100%;">
+          <view wx:for="{{locations}}" wx:key="index" class="Sp_ResultItem" bindtap="selectLocation" data-index="{{index}}">
+            <view class="Sp_ResultItem_img">
+              <image src="../../static/images/wz.png" mode="widthFix"/>
+            </view>
+            <view>{{item}}</view>
+          </view>
+        </scroll-view>
+      </view>
+
+  </view>
+
+  <!-- 路线规划面板 -->
+  <view class="route-panel" wx:if="{{showRoutePanel}}">
+    <view class="route-header">
+      <view class="route-title">路线规划</view>
+      <view class="route-close" bind:tap="resetRoute">
+        <van-icon name="cross" size="30rpx"/>
+      </view>
+    </view>
+    
+    <view class="route-info">
+      <view class="route-point">
+        <image src="../../static/images/start.png" class="route-point-icon"/>
+        <view class="route-point-text">{{startPoint.localname}}</view>
+      </view>
+      <view class="route-arrow">
+        <van-icon name="arrow-down" size="24rpx" color="#999"/>
+      </view>
+      <view class="route-point">
+        <image src="../../static/images/end.png" class="route-point-icon"/>
+        <view class="route-point-text">{{endPoint.localname}}</view>
+      </view>
+    </view>
+    
+    <view class="route-mode">
+      <view class="mode-item {{routeMode === 0 ? 'active' : ''}}" bind:tap="changeRouteMode" data-mode="0">
+        <van-icon name="car" size="36rpx"/>
+        <view>驾车</view>
+      </view>
+      <view class="mode-item {{routeMode === 1 ? 'active' : ''}}" bind:tap="changeRouteMode" data-mode="1">
+        <van-icon name="walk" size="36rpx"/>
+        <view>步行</view>
+      </view>
+      <view class="mode-item {{routeMode === 2 ? 'active' : ''}}" bind:tap="changeRouteMode" data-mode="2">
+        <van-icon name="bus" size="36rpx"/>
+        <view>公交</view>
+      </view>
+    </view>
+    
+    <view class="route-action">
+      <van-button type="primary" size="large" bind:tap="startNavigation">开始导航</van-button>
+    </view>
+  </view>
+
+  <!-- 路线规划提示 -->
+  <view class="route-tip" wx:if="{{isRoutePlanning && !showRoutePanel}}">
+    <view class="tip-content">
+      {{startPoint ? '请选择终点' : '请选择起点'}}
+    </view>
+  </view>
+
+  <!-- 自定义提示组件 -->
+  <view class="custom-toast" wx:if="{{showToast}}">
+    <view class="toast-content">{{toastMsg}}</view>
+  </view>
+
+</view>

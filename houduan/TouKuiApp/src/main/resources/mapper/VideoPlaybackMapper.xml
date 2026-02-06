@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Toukui.mapper.VideoPlaybackMapper">
+    <!-- Video result map -->
+    <resultMap id="VideoPlaybackResultMap" type="com.Toukui.pojo.VideoPlayback">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="url" property="url" />
+        <result column="thumbnail" property="thumbnail" />
+        <result column="date" property="date" />
+        <result column="time" property="time" />
+        <result column="duration" property="duration" />
+        <result column="is_new" property="isNew" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+    
+    <!-- Base column list -->
+    <sql id="Base_Column_List">
+        id, name, url, thumbnail, date, time, duration, is_new, create_time, update_time
+    </sql>
+    
+    <!-- Get all videos -->
+    <select id="getAllVideos" resultMap="VideoPlaybackResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM video_playback
+        ORDER BY date DESC, create_time DESC
+    </select>
+    
+    <!-- Get video by ID -->
+    <select id="getVideoById" parameterType="java.lang.Integer" resultMap="VideoPlaybackResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM video_playback
+        WHERE id = #{id}
+    </select>
+    
+    <!-- Add video -->
+    <insert id="addVideo" parameterType="com.Toukui.pojo.VideoPlayback">
+        INSERT INTO video_playback (name, url, thumbnail, date, time, duration, is_new)
+        VALUES (#{name}, #{url}, #{thumbnail}, #{date}, #{time}, #{duration}, #{isNew})
+    </insert>
+    
+    <!-- Update video status -->
+    <update id="updateVideoStatus" parameterType="java.lang.Integer">
+        UPDATE video_playback
+        SET is_new = 0, update_time = NOW()
+        WHERE id = #{id}
+    </update>
+    
+    <!-- Delete video -->
+    <delete id="deleteVideo" parameterType="java.lang.Integer">
+        DELETE FROM video_playback
+        WHERE id = #{id}
+    </delete>
+</mapper>

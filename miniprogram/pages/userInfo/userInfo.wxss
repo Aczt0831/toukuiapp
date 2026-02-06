@@ -1,0 +1,286 @@
+
+page {
+  background-color: #F5F5F5;
+}
+
+.container {
+  width: 100%;
+  min-height: 90vh;
+  padding-bottom: 40rpx;
+}
+
+.user-header {
+  background: linear-gradient(135deg, #4187F2 0%, #1E60D6 100%);
+  padding: 80rpx 230rpx 80rpx;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar-container {
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+  margin: 0 auto 30rpx;
+  z-index: 1;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 5rpx solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.avatar-container:active .avatar {
+  transform: scale(0.95);
+}
+
+.avatar-edit {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+.edit-text {
+  color: #FFFFFF;
+}
+
+.user-basic-info {
+  z-index: 1;
+  position: relative;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15rpx;
+  gap: 10rpx;
+}
+
+.name-text {
+  color: #FFFFFF;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.edit-icon {
+  color: #FFFFFF;
+  font-size: 28rpx;
+  opacity: 0.8;
+}
+
+.user-id {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 31rpx;
+}
+
+.info-list {
+  background: #FFFFFF;
+  width: 800rpx;
+  height: 290rpx;
+  border-radius: 10rpx;
+  padding: 40rpx 0;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25rpx 40rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+  transition: background-color 0.2s ease;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item:active {
+  background-color: #F8F8F8;
+}
+
+.info-label {
+  font-size: 32rpx;
+  color: #333333;
+  flex: 0 0 200rpx;
+}
+
+.info-value {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.value-text {
+  font-size: 30rpx;
+  color: #666666;
+  text-align: right;
+  max-width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arrow {
+  font-size: 36rpx;
+  color: #CCCCCC;
+}
+
+.action-buttons {
+  margin: 0 10rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  width: 750rpx;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.action-btn {
+  height: 100rpx;
+  width: 100%;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin: 0 auto;
+}
+
+.primary-btn {
+  background-color: #4187F2;
+  color: #FFFFFF;
+  box-shadow: 0 6rpx 16rpx rgba(65, 135, 242, 0.3);
+}
+
+.primary-btn:active {
+  background-color: #366FCF;
+  transform: translateY(2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(65, 135, 242, 0.2);
+}
+
+.secondary-btn {
+  background-color: #FFFFFF;
+  color: #4187F2;
+  border: 2rpx solid #4187F2;
+}
+
+.secondary-btn:active {
+  background-color: #F8F8F8;
+}
+
+.danger-btn {
+  background-color: #FFFFFF;
+  color: #FF4D4F;
+  border: 2rpx solid #FF4D4F;
+}
+
+.danger-btn:active {
+  background-color: #FFF1F0;
+}
+
+.action-content {
+  padding: 30rpx;
+}
+
+.textarea-input {
+  width: 100%;
+  min-height: 180rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  background-color: #F8F8F8;
+  border-radius: 15rpx;
+  margin-bottom: 20rpx;
+  resize: none;
+}
+
+.textarea-input:focus {
+  background-color: #F0F0F0;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 30rpx;
+}
+
+.button-group {
+  display: flex;
+  gap: 20rpx;
+}
+
+.cancel-btn,
+.confirm-btn {
+  flex: 1;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn {
+  background-color: #F5F5F5;
+  color: #666666;
+}
+
+.cancel-btn:active {
+  background-color: #E8E8E8;
+}
+
+.confirm-btn {
+  background-color: #4187F2;
+  color: #FFFFFF;
+}
+
+.confirm-btn:active {
+  background-color: #366FCF;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-header,
+.info-list,
+.action-buttons {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.user-header {
+  animation-delay: 0.1s;
+}
+
+.info-list {
+  animation-delay: 0.2s;
+}
+
+.action-buttons {
+  animation-delay: 0.3s;
+}

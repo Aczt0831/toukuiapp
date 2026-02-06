@@ -1,0 +1,190 @@
+<view class="All">
+  <!-- 顶部导航栏 -->
+  <!-- <view class="navbar"> -->
+    <!-- <view class="fanhui" bindtap="goBack">
+      <van-icon name="arrow-left" color="#000" size="40rpx"/> -->
+    <!-- </view>
+    <view class="nav-title">{{isUserWorksMode ? '我的作品' : '作品详情'}}</view>
+    <view class="nav-right"></view>
+  </view> -->
+
+  <!-- 加载状态 -->
+  <view class="loading-container" wx:if="{{loading}}">
+    <van-loading type="spinner" color="#1989fa" size="36rpx" />
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 错误提示 -->
+  <view class="error-container" wx:if="{{errorMsg && !loading}}">
+    <image class="error-icon" src="../../static/images/error.png" mode="aspectFit" />
+    <text class="error-text">{{errorMsg}}</text>
+    <view class="retry-btn" bindtap="loadPageData">重新加载</view>
+  </view>
+
+  <!-- 主内容区域 -->
+  <view class="content-container" wx:if="{{!loading && !errorMsg}}">
+    <!-- 用户作品列表模式 -->
+    <view wx:if="{{isUserWorksMode}}" class="user-works-container">
+      <!-- 空状态 -->
+      <view class="empty-works" wx:if="{{userWorks.length === 0}}">
+        <image class="empty-icon" src="../../static/images/empty.png" mode="aspectFit" />
+        <text class="empty-text">暂无作品</text>
+        <text class="empty-hint">快去创作你的第一个作品吧！</text>
+      </view>
+      
+      <!-- 作品列表 -->
+      <view class="works-list" wx:elif="{{userWorks.length > 0}}">
+        <block wx:for="{{userWorks}}" wx:key="zpid" wx:for-item="work">
+          <view class="work-item" bindtap="goWorkDetail" data-zpid="{{work.zpid}}">
+            <!-- 作品图片 -->
+            <view class="work-image-container">
+              <image 
+                class="work-image" 
+                mode="aspectFill" 
+                src="{{work.zpimg? 'data:image/jpeg;base64,' + work.zpimg : '../../static/images/default.png'}}" 
+              />
+            </view>
+            
+            <!-- 作品信息 -->
+            <view class="work-info">
+              <view class="work-title">{{work.zpname || '未命名作品'}}</view>
+              <view class="work-stats">
+                <view class="stat-item">
+                  <image class="stat-icon" src="../../static/images/dz.png" mode="aspectFit" />
+                  <text class="stat-text">{{work.zpdz || 0}}</text>
+                </view>
+                <view class="stat-item">
+                  <image class="stat-icon" src="../../static/images/pl.png" mode="aspectFit" />
+                  <text class="stat-text">{{work.zppl || 0}}</text>
+                </view>
+              </view>
+              <view class="work-time">{{work.time || ''}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!-- 作品详情模式内容 -->
+      <view wx:elif="{{!isUserWorksMode}}">
+        <!-- 用户信息 -->
+        <view class="userBox">
+      <view class="userBoxItem">
+        <view class="userTxBox">
+          <image class="tximg" src="{{zp.usertx? 'data:image/jpeg;base64,' + zp.usertx: '../../static/images/userempty.png' }}" mode="aspectFill"/>
+        </view>
+        <view class="username">{{zp.username || '未知用户'}}</view>
+      </view>
+    </view>
+
+    <!-- 作品图片 -->
+    <view class="ImgBox" bindtap="Motai" wx:if="{{zp.zpimg}}">
+      <!-- 图片加载动画 -->
+      <view class="image-loading" wx:if="{{isImageLoading}}">
+        <van-loading type="spinner" color="#1989fa" size="48rpx" />
+      </view>
+      <image 
+        class="zpImg" 
+        mode="aspectFill" 
+        src="{{zp.zpimg? 'data:image/jpeg;base64,' + zp.zpimg : ''}}" 
+        bindload="onImageLoad"
+      />
+    </view>
+
+    <!-- 作品信息 -->
+    <view class="TCT">
+      <!-- 作品标题 -->
+      <view class="textBox">
+        {{zp.zptitle || '无标题'}}
+      </view>
+
+      <!-- 作品内容 -->
+      <view class="contentBox">
+        {{zp.zpcontent || '无内容'}}
+      </view>
+
+      <view class="Time">
+        {{zp.zptime || ''}}
+      </view>
+    </view>
+    
+    <!-- 评论区 -->
+    <view class="plBox">
+      <view class="plText">全部评论({{plNum}})</view>
+      
+      <!-- 空评论状态 -->
+      <view class="noplBox" wx:if="{{isShowEmptyComment}}">
+        <image class="noplimg" mode="widthFix" src="../../static/images/wupl.png"/>
+        <text class="nopl-text">暂无评论，快来抢沙发吧~</text>
+      </view>
+      
+      <!-- 评论列表 -->
+      <view class="yesplBox" wx:else>
+        <view class="plItem" wx:for="{{pl}}" wx:key="index">
+          <!-- 评论者信息 -->
+          <view class="txNameBox">
+            <view class="txitemBox">
+              <view class="pltxbox">
+                <image class="pltximg" src="{{item.usertx? 'data:image/jpeg;base64,' + item.usertx: '../../static/images/userempty.png' }}" mode="aspectFill"/>
+              </view>
+              <view class="plName">{{item.username}}</view>
+              <view class="plTime">{{item.time}}</view>
+            </view>
+          </view>
+
+          <!-- 评论内容 -->
+          <view class="plcontent">{{item.content}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部交互栏 -->
+  <view class="PostPl" wx:if="{{!loading && !errorMsg}}">
+    <view class="plinput" bindtap="postpl" data-focus="true">说点什么~</view>
+    <view class="bottomIconBox">
+      <van-icon 
+        name="like-o" 
+        wx:if="{{!isdz}}" 
+        info="{{zp.zpdz || 0}}" 
+        bindtap="HandleDz" 
+        class="bottomIcon"
+      />
+      <van-icon 
+        name="like" 
+        style="color: red;" 
+        wx:if="{{isdz}}" 
+        info="{{zp.zpdz || 0}}" 
+        bindtap="CancleDz" 
+        class="bottomIcon"
+      />
+      <van-icon 
+        name="chat-o" 
+        info="{{plNum}}" 
+        class="bottomIcon bottomIcon2"
+        bindtap="postpl"
+        data-focus="true"
+      />
+    </view>
+  </view>
+
+  <!-- 评论输入弹窗 -->
+  <view class="bottomBox" wx:if="{{ispl}}">
+    <view class="bottomBoxTopBox" bindtap="closeinput"></view>
+    <view class="PostPl_input">
+      <textarea 
+        class="plinputtext" 
+        focus="{{isFocus}}" 
+        placeholder="说些什么~" 
+        bindinput="Handleplcontent" 
+        value="{{plcontent}}"
+        maxlength="200"
+        placeholder-style="color: #999"
+      />
+      <view class="postPlBtn">
+        <view class="postBtn" bindtap="setPl" wx:if="{{plcontent && plcontent.trim()}}">发布</view>
+        <view class="postBtn-disabled" wx:else>发布</view>
+      </view>
+    </view>
+      </view>
+  </view>
+</view>

@@ -1,0 +1,222 @@
+/* 预约保养页面样式 */
+/* .appointment-container {
+  padding-bottom: 80rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+} */
+
+/* 页面头部 */
+.appointment-header {
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+  background-color: #ffffff;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  padding: 0 30rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.back-button {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-left: 30rpx;
+}
+
+/* 表单容器 */
+.form-container {
+  padding-top: 140rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+/* 表单区块 */
+.form-section {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+/* 表单项 */
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-size: 30rpx;
+  color: #333333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+/* 输入框样式 */
+.input {
+  font-size: 28rpx;
+  color: #333333;
+  padding: 20rpx 25rpx;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 10rpx;
+  background-color: #ffffff;
+}
+
+.input:focus {
+  border-color: #1890ff;
+}
+
+/* 选择器样式 */
+.picker {
+  font-size: 28rpx;
+  color: #333333;
+  padding: 20rpx 25rpx;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 10rpx;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.picker::after {
+  content: '';
+  position: absolute;
+  right: 25rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 16rpx solid transparent;
+  border-right: 16rpx solid transparent;
+  border-top: 16rpx solid #999999;
+}
+
+/* 多行文本输入框 */
+.textarea {
+  font-size: 28rpx;
+  color: #333333;
+  padding: 20rpx 25rpx;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 10rpx;
+  background-color: #ffffff;
+  min-height: 180rpx;
+  line-height: 42rpx;
+}
+
+.textarea:focus {
+  border-color: #1890ff;
+}
+
+/* 字符计数 */
+.char-count {
+  font-size: 24rpx;
+  color: #999999;
+  text-align: right;
+  margin-top: 10rpx;
+}
+
+/* 保养类型选择 */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-right: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.checkbox-icon {
+  width: 36rpx;
+  height: 36rpx;
+  border: 2rpx solid #d9d9d9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10rpx;
+  background-color: #ffffff;
+}
+
+.checkbox-icon.active {
+  background-color: #1890ff;
+  border-color: #1890ff;
+}
+
+.checkbox-icon text {
+  font-size: 24rpx;
+  color: #ffffff;
+}
+
+.checkbox-text {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+/* 提交按钮区域 */
+.submit-section {
+  padding: 30rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.submit-button {
+  width: 100%;
+  height: 90rpx;
+  background-color: #1890ff;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 45rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.submit-button:active {
+  background-color: #40a9ff;
+}
+
+/* 适配不同尺寸屏幕 */
+@media screen and (min-width: 768px) {
+  .appointment-container {
+    max-width: 600rpx;
+    margin: 0 auto;
+  }
+}

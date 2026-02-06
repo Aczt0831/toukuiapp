@@ -1,0 +1,156 @@
+<!--pages/find/find.wxml-->
+<view class="find-container">
+  <!-- 顶部筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-tabs">
+      <view 
+        class="filter-tab {{currentFilter === 'latest' ? 'active' : ''}}"
+        data-filter="latest"
+        bindtap="switchFilter"
+      >
+        最新
+      </view>
+      <view 
+        class="filter-tab {{currentFilter === 'hot' ? 'active' : ''}}"
+        data-filter="hot"
+        bindtap="switchFilter"
+      >
+        热门
+      </view>
+      <view 
+        class="filter-tab {{currentFilter === 'follow' ? 'active' : ''}}"
+        data-filter="follow"
+        bindtap="switchFilter"
+      >
+        关注
+      </view>
+    </view>
+  </view>
+
+  <!-- 作品列表 -->
+  <scroll-view 
+    scroll-y 
+    class="content-scroll"
+    bindscrolltolower="onReachBottom"
+    bindrefresherrefresh="onPullDownRefresh"
+    refresher-enabled="true"
+    refresher-threshold="45"
+    refresher-triggered="{{refreshing}}"
+    refresher-background="#f8f8f8"
+  >
+    <!-- 空状态提示 -->
+    <view class="empty-state" wx:if="{{showEmptyState && !loading}}">
+      <!-- 3D动画加载器 -->
+      <view class="loader"></view>
+      <text class="empty-text">正在加载中</text>
+      <text class="empty-subtext">请稍等</text>
+      <button 
+        class="publish-btn" 
+        wx:if="{{id}}" 
+        bindtap="goSetZp"
+      >
+        立即发布
+      </button>
+      <button 
+        class="login-btn" 
+        wx:else 
+        bindtap="goSetZp"
+      >
+        登录后发布
+      </button>
+    </view>
+
+    <!-- 作品列表 -->
+    <view class="work-list" wx:if="{{Allzp.length > 0 || loading}}">
+      <!-- 作品项 -->
+      <view 
+        class="work-item" 
+        wx:for="{{Allzp}}" 
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="goToWorkDetail"
+      >
+        <!-- 用户信息 -->
+        <view class="user-info">
+          <image class="avatar" src="{{ item.usertx? 'data:image/jpeg;base64,' + item.usertx: '../../static/images/userempty.png' }}" mode="aspectFill"></image>
+          <view class="user-details">
+            <text class="username">{{item.username}}</text>
+          </view>
+        </view>
+
+        <!-- 作品内容 -->
+        <view class="work-content">
+          <text class="work-title">{{item.zptitle}}</text>
+          <text class="work-text">{{item.zpcontent}}</text>
+          
+          <!-- 作品图片 -->
+          <view class="image-container" wx:if="{{item.zpimg}}">
+            <image 
+              class="work-image" 
+              src="{{item.zpimg? 'data:image/jpeg;base64,' + item.zpimg: '../../static/images/userempty.png'}}" 
+              mode="aspectFill"
+              lazy-load="true"
+            ></image>
+          </view>
+        </view>
+
+        <!-- 交互区域 -->
+        <view class="interaction-bar">
+          <view class="interaction-item" catchtap="HandleDz" data-id="{{item.id}}">
+            <image class="interaction-icon {{dzList.includes(item.id.toString()) ? 'active' : ''}}" src="../../static/images/dz.png" mode="aspectFit" />
+            <text class="interaction-text">{{item.zpdz || 0}} 赞</text>
+          </view>
+          <view class="interaction-item" catchtap="HandleCommentClick" data-id="{{item.id}}">
+            <image class="interaction-icon" src="../../static/images/pl.png" mode="aspectFit" />
+            <text class="interaction-text">{{item.pl || 0}} 评论</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 加载更多提示 -->
+      <view class="loading-more" wx:if="{{loading && Allzp.length > 0}}">
+        <text class="loading-text">加载中...</text>
+        <view class="loading-spinner"></view>
+      </view>
+      
+      <!-- 没有更多数据提示 -->
+      <view class="no-more" wx:if="{{!hasMore && Allzp.length > 0 && !loading}}">
+        <text class="no-more-text">没有更多内容了</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 发布按钮 - 始终显示 -->
+  <view class="publish-button-container">
+    <button class="publish-button" bindtap="goSetZp">
+      <image class="publish-icon" src="../../static/images/setnew.png"></image>
+    </button>
+  </view>
+  
+  <!-- 评论输入弹窗 -->
+  <view class="comment-popup" wx:if="{{showCommentInput}}">
+    <view class="comment-overlay" bindtap="closeCommentInput"></view>
+    <view class="comment-content">
+      <view class="comment-header">
+        <text class="comment-title">发表评论</text>
+        <van-icon name="close" bindtap="closeCommentInput" class="close-icon" />
+      </view>
+      <view class="comment-input-container">
+        <textarea 
+          class="comment-textarea" 
+          value="{{commentContent}}" 
+          bindinput="onCommentInput" 
+          placeholder="写下你的评论..." 
+          placeholder-style="color: #999;" 
+          auto-height
+          maxlength="200"
+          focus
+        ></textarea>
+        <view class="comment-actions">
+          <text class="char-count">{{commentContent.length}}/200</text>
+          <button class="send-comment-btn" bindtap="sendComment">发送</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

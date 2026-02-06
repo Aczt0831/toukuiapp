@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Toukui.mapper.ProductMapper">
+    <!-- Base result map for Product -->
+    <resultMap id="ProductResultMap" type="com.Toukui.pojo.Product">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="price" property="price" />
+        <result column="image" property="image" />
+        <result column="total_count" property="totalCount" />
+        <result column="sold_count" property="soldCount" />
+    </resultMap>
+    
+    <!-- Base column list -->
+    <sql id="Base_Column_List">
+        id, name, price, image, total_count, sold_count
+    </sql>
+    
+    <!-- Get all products -->
+    <select id="getAllProducts" resultMap="ProductResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM product
+    </select>
+    
+    <!-- Get product by ID -->
+    <select id="getProductById" parameterType="java.lang.Integer" resultMap="ProductResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM product
+        WHERE id = #{id}
+    </select>
+    
+    <!-- Add product -->
+    <insert id="addProduct" parameterType="com.Toukui.pojo.Product">
+        INSERT INTO product (id, name, price, image, total_count, sold_count)
+        VALUES (#{id}, #{name}, #{price}, #{image}, #{totalCount}, #{soldCount})
+    </insert>
+    
+    <!-- Update product -->
+    <update id="updateProduct" parameterType="com.Toukui.pojo.Product">
+        UPDATE product
+        SET name = #{name},
+            price = #{price},
+            image = #{image},
+            total_count = #{totalCount},
+            sold_count = #{soldCount}
+        WHERE id = #{id}
+    </update>
+    
+    <!-- Delete product -->
+    <delete id="deleteProduct" parameterType="java.lang.Integer">
+        DELETE FROM product
+        WHERE id = #{id}
+    </delete>
+</mapper>

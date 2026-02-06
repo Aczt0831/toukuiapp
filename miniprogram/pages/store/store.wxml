@@ -1,0 +1,83 @@
+<!-- 头盔配件商城页面 -->
+<view class="store-container">
+  <view class="store-header"> 
+    <view class="header-actions">
+      <view class="cart-button" bindtap="goToCart">
+        <image src="../../static/images/shop.png" mode="aspectFit" class="cart-icon"></image>
+        <view class="cart-badge" wx:if="{{cartItemCount > 0}}">{{cartItemCount}}</view>
+      </view>
+    </view>
+  </view> 
+  
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-box">
+      <image src="../../static/images/ss.png" mode="aspectFit" class="search-icon"></image>
+      <input type="text" placeholder="搜索头盔配件" class="search-input" />
+    </view>
+  </view>
+  
+  <!-- 分类标签 -->
+  <view class="category-tabs">
+    <scroll-view scroll-x="true" enable-flex class="category-scroll">
+      <view class="category-tab active">全部</view>
+      <view class="category-tab">头盔镜片</view>
+      <view class="category-tab">头盔内衬</view>
+      <view class="category-tab">头盔气囊</view>
+      <view class="category-tab">头盔贴纸</view>
+      <view class="category-tab">其他配件</view>
+    </scroll-view>
+  </view>
+  
+  <!-- 下拉刷新区域 -->
+  <scroll-view 
+    scroll-y="true" 
+    class="product-scroll" 
+    bindrefresherpulling="onPullDownRefresh" 
+    refresher-triggered="{{refreshing}}"
+    refresher-enabled="true"
+    refresher-background="#f8f8f8"
+    refresher-default-style="black"
+  >
+    <!-- 加载中状态 -->
+    <view class="loading-container" wx:if="{{loading}}">
+      <view class="loader"></view>
+      <view class="loading-text">加载商品中...</view>
+    </view>
+    
+    <!-- 商品列表 -->
+    <view class="product-list" wx:else>
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{products.length === 0}}">
+        <image src="../../static/images/fail.png" mode="aspectFit" class="empty-image"></image>
+        <view class="empty-text">暂无商品</view>
+        <button class="refresh-btn" bindtap="fetchProductList">重新加载</button>
+      </view>
+      
+      <!-- 商品项 -->
+      <view class="product-item" wx:for="{{products}}" wx:key="id" bindtap="viewProductDetail" data-id="{{item.id}}">
+        <view class="product-image">
+          <!-- 根据后端返回的图片路径进行适配 -->
+          <image src="{{item.image && item.image.indexOf('http') === 0 ? item.image : '../../static/images/tkimg.png'}}" mode="aspectFit"></image>
+        </view>
+        <view class="product-info">
+          <view class="product-name">{{item.name}}</view>
+          <view class="product-price">¥{{item.price}}</view>
+          <view class="product-stats">
+            <text class="product-count">库存: {{item.totalCount || 0}}</text>
+            <text class="product-sold">已售: {{item.soldCount || 0}}</text>
+          </view>
+          <view class="product-actions">
+            <button class="add-to-cart" bindtap="addToCart" data-id="{{item.id}}" wx:if="{{item.totalCount > 0}}">加入购物车</button>
+            <button class="sold-out-btn" disabled wx:else>已售罄</button>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 加载完成提示 -->
+      <view class="load-more" wx:if="{{products.length > 0 && !hasMore}}">
+        <text>已加载全部商品</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

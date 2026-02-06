@@ -1,0 +1,111 @@
+<!-- AI客服交流页面 -->
+<view class="chat-container">
+  <!-- 顶部导航栏 -->
+  <!-- <view class="chat-header"> -->
+    <!-- <view class="back-button" bindtap="goBack">
+      <image src="../../static/images/back.png" mode="aspectFit"></image>
+    </view>
+    <view class="chat-title">AI客服助手</view>
+    <view class="status-indicator">
+      <view class="online-indicator active"></view>
+      <text class="status-text">在线</text>
+    </view>
+  </view> -->
+
+  <!-- 聊天内容区域 -->
+  <scroll-view class="chat-content" scroll-y="true" scroll-into-view="{{scrollToMessage}}" scroll-with-animation="true">
+    <!-- 欢迎消息 -->
+    <view class="message-item assistant-message">
+      <view class="avatar">
+        <image src="../../static/images/AI.png" mode="aspectFit"></image>
+      </view>
+      <view class="message-bubble">
+        <text class="message-text">您好！我是智安盾AI客服助手，很高兴为您服务。请问有什么可以帮助您的？</text>
+      </view>
+    </view>
+
+    <!-- 消息列表 -->
+    <block wx:for="{{messages}}" wx:key="index">
+      <!-- 用户消息 -->
+      <view class="message-item user-message" id="msg-{{index}}">
+        <view class="message-bubble">
+          <text class="message-text">{{item.content}}</text>
+        </view>
+        <view class="avatar">
+          <image src="../../static/images/user.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <!-- 深度思考过程 -->
+      <view class="message-item assistant-message thinking-process" id="msg-{{index}}-thinking" wx:if="{{item.thinking}}">
+        <view class="avatar">
+          <image src="../../static/images/AI.png" mode="aspectFit"></image>
+        </view>
+        <view class="message-bubble thinking-bubble">
+          <view class="thinking-header">
+            <text class="thinking-label">🤔 正在深度思考...</text>
+          </view>
+          <text class="message-text thinking-text">{{item.thinking}}</text>
+        </view>
+      </view>
+      
+      <!-- 助手消息 -->
+      <view class="message-item assistant-message" id="msg-{{index}}-reply">
+        <view class="avatar">
+          <image src="../../static/images/AI.png" mode="aspectFit"></image>
+        </view>
+        <view class="message-bubble">
+          <text class="message-text">{{item.reply}}</text>
+        </view>
+      </view>
+    </block>
+
+    <!-- 正在输入提示 -->
+    <view class="message-item assistant-message" wx:if="{{isTyping}}">
+      <view class="avatar">
+        <image src="../../static/images/tkimg.png" mode="aspectFit"></image>
+      </view>
+      <view class="message-bubble">
+        <view class="typing-container">
+          <view class="typing-indicator">
+            <view class="dot"></view>
+            <view class="dot"></view>
+            <view class="dot"></view>
+          </view>
+          <button 
+            class="interrupt-button" 
+            type="default" 
+            size="mini" 
+            bindtap="interruptAIResponse"
+          >
+            中断生成
+          </button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <view class="input-container">
+      <input 
+        class="text-input" 
+        type="text" 
+        placeholder="请输入您的问题..." 
+        value="{{inputText}}"
+        bindinput="onInputChange"
+        bindconfirm="sendMessage"
+        confirm-type="send"
+        disabled="{{isTyping}}"
+      />
+      <button 
+        class="send-button" 
+        type="primary" 
+        size="mini" 
+        bindtap="sendMessage"
+        disabled="{{isTyping || !inputText.trim()}}"
+      >
+        发送
+      </button>
+    </view>
+  </view>
+</view>

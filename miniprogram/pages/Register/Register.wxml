@@ -1,0 +1,110 @@
+<!-- 返回按钮区域 -->
+<view class="shezhiBtn">
+  <view class="setBtn" bindtap="back">
+    <image src="../../static/images/back.png" mode="" class="setIcon"></image>
+  </view>
+</view>
+
+<!-- 欢迎信息区域 -->
+<view class="hYBox">
+  <view class="hYBox_text">
+    <view>您好，</view>
+    欢迎使用产品
+  </view>
+</view>
+
+<!-- 注册表单区域 -->
+<view class="InputBox">
+  <!-- 账号输入框 -->
+  <view class="accountBox">
+    <view class="accountBox_text">账号</view>
+    <input 
+      type="text" 
+      placeholder="请输入您的账号" 
+      bindinput="AccInput" 
+      value="{{account}}" 
+      class="accountBox_input"
+    ></input>
+  </view>
+  
+  <!-- 密码输入框 -->
+  <view class="accountBox">
+    <view class="accountBox_text">密码</view>
+    <view class="accountBox_inputBox">
+      <!-- 密码输入，根据isSee状态切换显示模式 -->
+      <input 
+        type="{{isSee ? 'password' : 'text'}}" 
+        placeholder="请输入您的密码" 
+        bindinput="PassInput" 
+        value="{{password}}" 
+        class="accountBox_input"
+      ></input>
+      <!-- 密码可见性切换按钮 -->
+      <view class="seeBox">
+        <image 
+          src="../../static/images/nosee.png" 
+          wx:if="{{isSee}}" 
+          mode="" 
+          bindtap="changeSee"
+        ></image>
+        <image 
+          src="../../static/images/see.png" 
+          wx:if="{{!isSee}}" 
+          mode="" 
+          bindtap="changeSee"
+        ></image>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 确认密码输入框 -->
+  <view class="accountBox">
+    <view class="accountBox_text">重新输入密码</view>
+    <view class="accountBox_inputBox">
+      <!-- 确认密码输入 -->
+      <input 
+        type="{{isSee ? 'password' : 'text'}}" 
+        placeholder="请再次输入您的密码" 
+        bindinput="PassInput2" 
+        value="{{password2}}" 
+        class="accountBox_input"
+      ></input>
+      <!-- 密码可见性切换按钮 -->
+      <view class="seeBox">
+        <image 
+          src="../../static/images/nosee.png" 
+          wx:if="{{isSee}}" 
+          mode="" 
+          bindtap="changeSee"
+        ></image>
+        <image 
+          src="../../static/images/see.png" 
+          wx:if="{{!isSee}}" 
+          mode="" 
+          bindtap="changeSee"
+        ></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮区域 -->
+  <view class="BtnBigBox">
+    <view class="BtnBox" style="background-color: #F6F7FB;" bindtap="Register">立即注册</view>
+  </view>
+  
+  <!-- Toast提示组件 -->
+  <van-toast id="van-toast" />
+</view>
+
+<!-- 第三方登录区域 --><view class="threeDL">
+  <view class="threeDL_text">——————— 第三方登录 ———————</view>
+  <view class="threeDL_icon">
+    <view class="threeDL_iconimg" bindtap="handleWechatLogin">
+      <image src="../../static/images/wx.png" mode=""></image>
+    </view>
+    <view class="threeDL_iconimg">
+      <image src="../../static/images/qq.png" mode=""></image>
+    </view>
+  </view>
+</view>
+

@@ -1,0 +1,571 @@
+/* pages/networkDate/networkDate.wxss */
+
+/* 全局样式 */
+page {
+  background-color: #F5F5F5;
+}
+
+.network-date-container {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  color: #333;
+  padding-bottom: 60rpx;
+}
+
+/* 头部样式 */
+.header {
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+  padding: 0 30rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.back-button {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f5f5f5;
+  transition: all 0.3s ease;
+}
+
+.back-button:active {
+  background: #e0e0e0;
+  transform: scale(0.95);
+}
+
+.back-icon {
+  font-size: 48rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 标题样式已删除 */
+.header-right {
+  /* 保持header的结构完整性 */
+  width: 80rpx;
+}
+
+/* 加载状态样式 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 600rpx;
+}
+
+/* 新的加载动画样式 */
+.loader {
+  position: relative;
+  width: 75px;
+  height: 100px;
+  margin-bottom: 30rpx;
+}
+
+.loader__bar {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 50%;
+  background: rgb(0, 0, 0);
+  transform-origin: center bottom;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.loader__bar:nth-child(1) {
+  left: 0px;
+  transform: scale(1, 0.2);
+  animation: barUp1 4s infinite;
+}
+
+.loader__bar:nth-child(2) {
+  left: 15px;
+  transform: scale(1, 0.4);
+  animation: barUp2 4s infinite;
+}
+
+.loader__bar:nth-child(3) {
+  left: 30px;
+  transform: scale(1, 0.6);
+  animation: barUp3 4s infinite;
+}
+
+.loader__bar:nth-child(4) {
+  left: 45px;
+  transform: scale(1, 0.8);
+  animation: barUp4 4s infinite;
+}
+
+.loader__bar:nth-child(5) {
+  left: 60px;
+  transform: scale(1, 1);
+  animation: barUp5 4s infinite;
+}
+
+.loader__ball {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: rgb(44, 143, 255);
+  border-radius: 50%;
+  animation: ball624 4s infinite;
+}
+
+@keyframes ball624 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  5% {
+    transform: translate(8px, -14px);
+  }
+
+  10% {
+    transform: translate(15px, -10px);
+  }
+
+  17% {
+    transform: translate(23px, -24px);
+  }
+
+  20% {
+    transform: translate(30px, -20px);
+  }
+
+  27% {
+    transform: translate(38px, -34px);
+  }
+
+  30% {
+    transform: translate(45px, -30px);
+  }
+
+  37% {
+    transform: translate(53px, -44px);
+  }
+
+  40% {
+    transform: translate(60px, -40px);
+  }
+
+  50% {
+    transform: translate(60px, 0);
+  }
+
+  57% {
+    transform: translate(53px, -14px);
+  }
+
+  60% {
+    transform: translate(45px, -10px);
+  }
+
+  67% {
+    transform: translate(37px, -24px);
+  }
+
+  70% {
+    transform: translate(30px, -20px);
+  }
+
+  77% {
+    transform: translate(22px, -34px);
+  }
+
+  80% {
+    transform: translate(15px, -30px);
+  }
+
+  87% {
+    transform: translate(7px, -44px);
+  }
+
+  90% {
+    transform: translate(0, -40px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes barUp1 {
+  0% {
+    transform: scale(1, 0.2);
+  }
+
+  40% {
+    transform: scale(1, 0.2);
+  }
+
+  50% {
+    transform: scale(1, 1);
+  }
+
+  90% {
+    transform: scale(1, 1);
+  }
+
+  100% {
+    transform: scale(1, 0.2);
+  }
+}
+
+@keyframes barUp2 {
+  0% {
+    transform: scale(1, 0.4);
+  }
+
+  40% {
+    transform: scale(1, 0.4);
+  }
+
+  50% {
+    transform: scale(1, 0.8);
+  }
+
+  90% {
+    transform: scale(1, 0.8);
+  }
+
+  100% {
+    transform: scale(1, 0.4);
+  }
+}
+
+@keyframes barUp3 {
+  0% {
+    transform: scale(1, 0.6);
+  }
+
+  100% {
+    transform: scale(1, 0.6);
+  }
+}
+
+@keyframes barUp4 {
+  0% {
+    transform: scale(1, 0.8);
+  }
+
+  40% {
+    transform: scale(1, 0.8);
+  }
+
+  50% {
+    transform: scale(1, 0.4);
+  }
+
+  90% {
+    transform: scale(1, 0.4);
+  }
+
+  100% {
+    transform: scale(1, 0.8);
+  }
+}
+
+@keyframes barUp5 {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  40% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1, 0.2);
+  }
+
+  90% {
+    transform: scale(1, 0.2);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.loading-text {
+  font-size: 32rpx;
+  color: #666;
+}
+
+/* 未登录状态样式 */
+.no-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 600rpx;
+  padding: 0 40rpx;
+}
+
+.no-login-icon {
+  font-size: 120rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.8;
+}
+
+.no-login-text {
+  font-size: 32rpx;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40rpx;
+  line-height: 48rpx;
+}
+
+.login-button {
+  background-color: #00a8ff;
+  color: #fff;
+  font-size: 32rpx;
+  padding: 20rpx 60rpx;
+  border-radius: 60rpx;
+  border: none;
+  box-shadow: 0 6rpx 16rpx rgba(0, 168, 255, 0.4);
+}
+
+.login-button:active {
+  opacity: 0.8;
+}
+
+/* 主内容区域 */
+.content {
+  padding: 40rpx 30rpx;
+}
+
+/* 日期卡片样式 */
+.date-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  border: 1rpx solid #e0e0e0;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.date-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.date-card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.status-badge {
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background: rgba(76, 175, 80, 0.3);
+  color: #4caf50;
+  border: 1rpx solid rgba(76, 175, 80, 0.5);
+}
+
+.status-badge.expired {
+  background: rgba(244, 67, 54, 0.3);
+  color: #f44336;
+  border: 1rpx solid rgba(244, 67, 54, 0.5);
+}
+
+/* 日期信息样式 */
+.date-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 30rpx;
+}
+
+.date-item {
+  flex: 1;
+  text-align: center;
+}
+
+.date-label {
+  display: block;
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.date-value {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.date-divider {
+  margin: 0 30rpx;
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+/* 剩余天数样式 */
+.remaining-days {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  background: rgba(3, 169, 244, 0.1);
+  border-radius: 16rpx;
+  border: 1rpx solid rgba(3, 169, 244, 0.3);
+}
+
+.remaining-days-label {
+  font-size: 28rpx;
+  color: #03a9f4;
+}
+
+.remaining-days-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #03a9f4;
+  margin: 0 10rpx;
+}
+
+/* 提示信息区域 */
+.info-section {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  border: 1rpx solid #e0e0e0;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.info-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15rpx;
+}
+
+.info-icon {
+  font-size: 32rpx;
+  color: #03a9f4;
+  margin-top: 4rpx;
+}
+
+.info-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 操作按钮区域 */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.primary-button {
+  width: 100%;
+  height: 96rpx;
+  background: linear-gradient(135deg, #00b4ff 0%, #0088ff 100%);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 48rpx;
+  border: none;
+  box-shadow: 0 8rpx 20rpx rgba(0, 180, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.primary-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 10rpx rgba(0, 180, 255, 0.2);
+}
+
+.secondary-button {
+  width: 100%;
+  height: 96rpx;
+  background: transparent;
+  color: #00b4ff;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 48rpx;
+  border: 2rpx solid #00b4ff;
+  transition: all 0.3s ease;
+}
+
+.secondary-button:active {
+  background: rgba(0, 180, 255, 0.1);
+  transform: scale(0.98);
+}
+
+/* 底部装饰 - 移除深色背景下的渐变效果 */
+
+/* 响应式设计 */
+@media screen and (max-width: 375px) {
+  .date-info {
+    flex-direction: column;
+    gap: 20rpx;
+  }
+  
+  .date-divider {
+    transform: rotate(90deg);
+    margin: 10rpx 0;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.date-card,
+.info-section,
+.action-buttons {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.date-card {
+  animation-delay: 0.1s;
+}
+
+.info-section {
+  animation-delay: 0.3s;
+}
+
+.action-buttons {
+  animation-delay: 0.5s;
+}

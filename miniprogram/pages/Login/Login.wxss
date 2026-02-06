@@ -1,0 +1,122 @@
+.shezhiBtn {
+	width: 100%;
+	height: 60rpx;
+	position: fixed;
+	top: 110rpx;
+}
+.setBtn {
+	width: 40rpx;
+	height: 40rpx;
+	background-color: #e7e7e7;
+	border-radius: 20rpx;
+	display: flex;
+	align-items: center;
+	justify-items: center;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 50rpx;
+}
+.setIcon {
+	width: 50%;
+	height: 50%;
+	margin: 0 auto;
+}
+.setBtn:hover {
+	background-color: #b3b3b3;
+}
+
+.hYBox {
+	position: relative;
+	width: 100%;
+	height: 450rpx;
+	background: linear-gradient(to left, #3CA3FE, #1D90FC);
+	z-index: -2;
+}
+.hYBox_text {
+	font-size: 3vh;
+	color: #D5FFFE;
+	font-weight: 700;
+	position: absolute;
+	left: 50rpx;
+	bottom: 120rpx;
+}
+.InputBox {
+	width: 100%;
+	background-color: #ffffff;
+	border-radius: 50rpx;
+	margin-top: -50rpx;
+}
+.accountBox {
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 4vh;
+	position: relative;
+}
+.accountBox_text {
+	font-weight: 700;
+	font-size: 2.5vh;
+}
+.accountBox_inputBox {
+	position: relative;
+}
+.accountBox_input {
+	width: 100%;
+	height: 80rpx;
+	border-bottom: 1px solid #eaeaea;
+	font-size: 28rpx;
+	padding-right: 70rpx;
+	box-sizing: border-box;
+}
+.seeBox {
+	position: absolute;
+	width: 40rpx;
+	height: 40rpx;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 10rpx;
+}
+.seeBox image {
+	width: 100%;
+	height: 100%;
+}
+.BtnBigBox {
+	padding-top: 20rpx;
+}
+.BtnBox {
+	width: 80%;
+	margin: 50rpx auto;
+	height: 100rpx;
+	line-height: 100rpx;
+	text-align: center;
+	font-size: 30rpx;
+	font-weight: 700;
+	border-radius: 50rpx;
+}
+.threeDL {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 250rpx;
+}
+.threeDL_text {
+	width: 100%;
+	text-align: center;
+	font-size: 25rpx;
+	color: #dadada;
+}
+.threeDL_icon {
+	width: 100%;
+	height: 150rpx;
+	display: flex;
+}
+.threeDL_iconimg {
+	flex: 1;
+	display: flex;
+	align-items: center;
+}
+.threeDL_iconimg image {
+	display: block;
+	margin: 0 auto;
+	width: 90rpx;
+	height: 90rpx;
+}

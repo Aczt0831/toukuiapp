@@ -1,0 +1,58 @@
+<!-- 返回按钮区域 -->
+<view class="shezhiBtn">
+  <view class="setBtn" bindtap="back">
+    <image src="../../static/images/back.png" mode="" class="setIcon"></image>
+  </view>
+</view>
+
+<!-- 欢迎信息区域 -->
+<view class="hYBox">
+  <view class="hYBox_text">
+    <view>您好，</view>
+    欢迎使用产品
+  </view>
+</view>
+
+<!-- 登录表单区域 -->
+<view class="InputBox">
+  <!-- 账号输入框 -->
+  <view class="accountBox">
+    <view class="accountBox_text">账号</view>
+    <input 
+      type="text" 
+      placeholder="请输入您的账号" 
+      value="{{account}}" 
+      bindinput="AccInput" 
+      class="accountBox_input" 
+    />
+  </view>
+  
+  <!-- 密码输入框 -->
+  <view class="accountBox">
+    <view class="accountBox_text">密码</view>
+    <view class="accountBox_inputBox">
+      <!-- 根据isSee状态切换密码可见性 -->
+      <input 
+        type="{{isSee ? 'password' : 'text'}}" 
+        placeholder="请输入您的密码" 
+        value="{{password}}" 
+        bindinput="PassInput" 
+        class="accountBox_input" 
+      />
+      <!-- 密码可见性切换按钮 -->
+      <view class="seeBox">
+        <image 
+          src="{{isSee ? '../../static/images/nosee.png' : '../../static/images/see.png'}}" 
+          mode="" 
+          bindtap="changeSee" 
+        ></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮区域 -->
+  <view class="BtnBigBox">
+    <view class="BtnBox" style="background-color: #1082FF; color: white;" bindtap="login">登录</view>
+    <view class="BtnBox" style="background-color: #F6F7FB;" bindtap="register">前往注册</view>
+  </view>
+</view>

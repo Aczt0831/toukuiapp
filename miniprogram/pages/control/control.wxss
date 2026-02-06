@@ -1,0 +1,366 @@
+@font-face {
+	font-family: "iconfont"; /* Project id 4469500 */
+	src: url('//at.alicdn.com/t/c/font_4469500_gh03dz1gew8.woff2?t=1713941514988') format('woff2'),
+		 url('//at.alicdn.com/t/c/font_4469500_gh03dz1gew8.woff?t=1713941514988') format('woff'),
+		 url('//at.alicdn.com/t/c/font_4469500_gh03dz1gew8.ttf?t=1713941514988') format('truetype');
+  }
+  
+  .iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-Versant:before {
+	content: "\e67c";
+  }
+  
+  .icon-wurao:before {
+	content: "\e6dd";
+  }
+  
+  .icon-jingyin:before {
+	content: "\e61f";
+  }
+  
+  .icon-jiangzao:before {
+	content: "\e6a6";
+  }
+  
+  .icon-LEDtoujingdadeng:before {
+	content: "\e603";
+  }
+  
+  .icon-rihangdengtoujingdadeng:before {
+	content: "\e602";
+  }
+  
+  .icon-fengshan:before {
+	content: "\e664";
+  }
+
+.topBox {
+	width: 100%;
+	height: 11.5vh;
+	margin: 0 auto;
+	position: relative;
+}
+.userBoxItem {
+	width: 100%;
+	position: absolute;
+	left: 30rpx;
+	bottom: 1vh;
+	display: flex;
+	align-items: center;
+}
+
+.username {
+	margin-left: 10rpx;
+	font-size: 35rpx;
+	font-weight: 700;
+}
+
+.TK_Img_Box {
+	width: 100%;
+	height: 37vh;
+	display: flex;
+	justify-items: center;
+	align-items: center;
+
+}
+.TKImg_box {
+	width: 45%;
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	margin: auto;
+}
+.tkimg {
+	width: 100%;
+}
+
+.controlBtn_Box {
+	position: relative;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: -20rpx;
+	display: flex;
+}
+.controlBtn_Left {
+	width: 45%;
+	margin: 0 2.5%;
+}
+.controlBtn_Right {
+	width: 45%;
+	margin: 0 2.5%;
+}
+
+.gn_btn {
+	width: 100%;
+	border-radius: 40rpx;
+	box-shadow: 0 0 40rpx 0 rgba(173, 173, 173, 0.2);
+}
+
+.Electricity_Btn {
+	height: 300rpx;
+	padding: 0 25rpx;
+	box-sizing: border-box;
+}
+
+.Open_Fan_Btn {
+	height: 150rpx;
+	display: flex;
+	justify-items: center;
+	align-items: center;
+}
+
+.Light_Btn {
+	height: 150rpx;
+	margin-top: 2.5vh;
+}
+
+.Volume_btn {
+	height: 300rpx;
+	padding: 0 25rpx;
+	box-sizing: border-box;
+	margin-top: 2.5vh;
+}
+
+.FanImg {
+	margin-left: 50rpx;
+	font-size: 50rpx;
+	transition: transform 1s ease-in-out,color 0.5s ease-in-out;
+}
+
+/* 美化的风扇旋转效果 */
+.rotate {
+	color: #667eea;
+	transform: rotate(720deg);
+	filter: drop-shadow(0 0 10rpx rgba(22, 47, 156, 0.5));
+}
+
+/* 美化的灯光效果 */
+.Light {
+	color: #ffb703;
+	filter: drop-shadow(0 0 10rpx rgba(222, 167, 30, 0.47));
+}
+
+.Fan_Text {
+	font-size: 32rpx;
+	font-weight: 700;
+	margin-left: 40rpx;
+}
+
+.OpenFan_down {
+	font-size: 28rpx;
+	font-weight: 500;
+	color: rgb(172, 172, 172);
+	margin-top: 10rpx;
+}
+
+.ElTopBox {
+	width: 100%;
+	padding-top: 22rpx;
+	position: relative;
+}
+
+.ElText_down {
+	font-size: 23rpx;
+	color: rgb(172, 172, 172);
+}
+
+.ElTopBox_Img {
+	position: absolute;
+	width: 60rpx;
+	height: 60rpx;
+	top: 30rpx;
+	right: 5rpx;
+}
+
+.elimg {
+	width: 100%;
+	height: 100%;
+}
+
+.ElDownBox {
+	margin-top: 90rpx;
+}
+
+.RemainderEl {
+	margin-bottom: 10rpx;
+	font-size: 23rpx;
+	color: rgb(172, 172, 172);
+}
+
+/* 美化的电量和音量显示条 */
+.RemainderEl_box {
+	width: 100%;
+	height: 45rpx;
+	border-radius: 22.5rpx;
+	background: linear-gradient(135deg, #3550c7ff 0%, #12bda3ff 100%);
+	text-align: right;
+	overflow: hidden;
+	box-shadow: inset 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+	position: relative;
+	transition: all 0.5s ease;
+}
+
+.RemainderEl_box::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.RemainderEl_box_in {
+	background-color: rgb(235, 235, 235);
+	height: 100%;
+	display: inline-block;
+}
+
+.Light_Btn {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+}
+
+.controlYLBox {
+	width: 100%;
+	display: flex;
+}
+
+.YLBox {
+	width: 47%;
+	height: 50rpx;
+	border-radius: 50rpx;
+	background-color: rgb(245, 245, 245);
+	text-align: center;
+	line-height: 50rpx;
+	color: rgb(160, 160, 160);
+}
+
+.YLBoxL {
+
+}
+
+.YLBoxR {
+	margin-left: 6%;
+}
+
+.LeftTopBox {
+	width: 100%;
+	height: 140rpx;
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	margin-bottom: 6vh;
+}
+
+.LeftTopBox_1,
+.LeftTopBox_2 {
+	width: 45%;
+	height: 100%;
+	box-shadow: 0 0 40rpx 0 rgba(173, 173, 173, 0.2);
+	border-radius: 50rpx;
+	line-height: 140rpx;
+	text-align: center;
+	transition: background-color 0.5s ease-in-out,color 0.5s ease-in-out;
+}
+
+.LeftTopBox_1 {
+	
+}
+
+.LeftTopBox_2 {
+	margin-left: 10%;
+}
+
+.LeftTopBox_1 i,
+.LeftTopBox_2 i {
+	font-size: 40rpx;
+}
+
+.topBtn1 {
+	background-color: #77d8b3;
+	color: white;
+}
+
+.topBtn2 {
+	background-color: rgb( 87, 85,199);
+	color: white;
+}
+
+/* 分割线 */
+.Line {
+	position: absolute;
+	top: 183rpx;
+	width: 90%;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 1px;
+	background-color: rgb(241, 241, 241);
+}
+
+/* 未连接蓝牙设备 */
+.All2 {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+}
+
+.container{
+	margin: 0 auto;
+	width: 300px;
+	height:300px;
+	position: relative;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.circle{
+	position:absolute;
+    width:170rpx;
+	height:170rpx;
+    border-radius:50%;
+    background-color:rgb(28, 230, 179);
+}
+
+.circle:nth-child(1){
+    animation:anim 3s linear infinite;
+}
+
+.circle:nth-child(2){
+    animation:anim 3s linear 0.8s infinite;
+}
+
+.circle:nth-child(3){
+    animation:anim 3s linear 1.6s infinite;
+}
+
+.Link {
+	position: absolute;
+	z-index: 999;
+	color: #fff;
+}
+
+@keyframes anim{
+    from  {  opacity:1;  transform:scale(0);  }
+    to    {  opacity:0;  transform:scale(3);  }
+}

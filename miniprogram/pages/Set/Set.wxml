@@ -1,0 +1,77 @@
+<view class="page-container">
+  <!-- 用户状态区域 -->
+  <view class="user-section">
+    <view class="user-status" wx:if="{{!id}}">
+      <!-- <view class="avatar-placeholder">
+        <text class="avatar-text">未登录</text>
+      </view> -->
+      <button class="login-btn" type="primary" bindtap="Login">立即登录</button>
+    </view>
+    
+    <view class="user-info" wx:else>
+      <view class="avatar-placeholder">
+        <text class="avatar-text">{{id.substr(0, 1).toUpperCase() || 'U'}}</text>
+      </view>
+      
+      <view class="user-detail">
+        <text class="user-id">用户ID: {{id}}</text>
+        <text class="user-tip">点击管理个人信息</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 设置选项区域 -->
+  <view class="settings-section">
+    <!-- 第一组设置 -->
+    <view class="settings-group">
+      <view class="setting-item" 
+            wx:for="{{settings}}" 
+            wx:key="id"
+            bindtap="handleSettingItemClick"
+            data-id="{{item.id}}"
+            wx:if="{{item.id !== 'about' && item.id !== 'feedback'}}">
+        <view class="setting-icon">
+      <image src="/static/images/geren.png" class="user-icon" mode="aspectFit" />
+        </view>
+        <view class="setting-title">{{item.title}}</view>
+        <image wx:if="{{item.showArrow}}" src="/static/images/enter.png" class="setting-arrow" mode="aspectFit" />
+      </view>
+    </view>
+    
+    <!-- 第二组设置 -->
+    <view class="settings-group">
+      <view class="setting-item" 
+            wx:for="{{settings}}" 
+            wx:key="id"
+            bindtap="handleSettingItemClick"
+            data-id="{{item.id}}"
+            wx:if="{{item.id === 'about' || item.id === 'feedback'}}">
+        <view class="setting-icon">
+        <image src="/static/images/about.png" class="user-icon" mode="aspectFit" />
+        </view>
+        <view class="setting-title">{{item.title}}</view>
+        <image wx:if="{{item.showArrow}}" src="/static/images/enter.png" class="setting-arrow" mode="aspectFit" />
+      </view>
+      
+      <!-- 检查更新 -->
+      <view class="setting-item" bindtap="checkUpdate">
+        <view class="setting-icon">
+          <van-icon name="upgrade-o" size="36rpx" />
+        </view>
+        <view class="setting-title">检查更新</view>
+        <view class="setting-version">{{appVersion}}</view>
+        <image src="/static/images/enter.png" class="setting-arrow" mode="aspectFit" />
+      </view>
+    </view>
+  </view>
+  
+  <!-- 退出登录按钮 -->
+  <view class="logout-section" wx:if="{{id}}">
+    <button class="logout-btn" type="warn" bindtap="tuichu">退出登录</button>
+  </view>
+  
+  <!-- 底部版本信息 -->
+  <view class="footer">
+    <text class="footer-text">智安盾头盔应用 v{{appVersion}}</text>
+  </view>
+</view>

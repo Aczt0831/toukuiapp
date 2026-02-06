@@ -1,0 +1,88 @@
+<view class="network-date-container">
+  <!-- 页面头部 -->
+  <!-- <view class="header">
+    <view class="back-button" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="header-right"></view>
+  </view> -->
+
+  <!-- 加载状态 -->
+  <view class="loading-container" wx:if="{{isLoading}}">
+    <view class="loader">
+      <view class="loader__bar"></view>
+      <view class="loader__bar"></view>
+      <view class="loader__bar"></view>
+      <view class="loader__bar"></view>
+      <view class="loader__bar"></view>
+      <view class="loader__ball"></view>
+    </view>
+    <text class="loading-text">正在加载中...</text>
+  </view>
+
+  <!-- 未登录状态 -->
+  <view class="no-login-container" wx:elif="{{!hasData}}">
+    <view class="no-login-icon">👤</view>
+    <text class="no-login-text">请先登录查看会员服务信息</text>
+    <button class="login-button" bindtap="goToLogin">立即登录</button>
+  </view>
+
+  <!-- 主内容区域 -->
+  <view class="content" wx:else>
+    <!-- 日期卡片 -->
+    <view class="date-card">
+      <view class="date-card-header">
+        <text class="date-card-title">会员有效期</text>
+        <view class="status-badge {{networkInfo.status === 'active' ? 'active' : 'expired'}}">
+          {{networkInfo.status === 'active' ? '有效' : '已过期'}}
+        </view>
+      </view>
+      
+      <view class="date-info">
+        <view class="date-item">
+          <text class="date-label">开始日期</text>
+          <text class="date-value">{{formattedDate.start || '--'}}</text>
+        </view>
+        
+        <view class="date-divider">至</view>
+        
+        <view class="date-item">
+          <text class="date-label">结束日期</text>
+          <text class="date-value">{{formattedDate.end || '--'}}</text>
+        </view>
+      </view>
+      
+      <view class="remaining-days" wx:if="networkInfo.status === 'active'">
+        <text class="remaining-days-label">剩余</text>
+        <text class="remaining-days-value">{{formattedDate.remainingDays || 0}}</text>
+        <text class="remaining-days-label">天</text>
+      </view>
+    </view>
+
+    <!-- 提示信息 -->
+    <view class="info-section">
+      <view class="info-title">服务说明</view>
+      <view class="info-content">
+        <view class="info-item">
+          <text class="info-icon">•</text>
+          <text class="info-text">联网服务期间可享受实时定位、数据同步等功能</text>
+        </view>
+        <view class="info-item">
+          <text class="info-icon">•</text>
+          <text class="info-text">服务到期前7天系统将自动提醒您续费</text>
+        </view>
+        <view class="info-item">
+          <text class="info-icon">•</text>
+          <text class="info-text">您可以联系客服延长服务期限或更改套餐</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button class="primary-button" bindtap="goRenew">立即续费</button>
+      <button class="secondary-button" bindtap="goCustomerService">联系客服</button>
+    </view>
+  </view>
+
+</view>

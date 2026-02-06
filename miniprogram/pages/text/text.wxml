@@ -1,0 +1,14 @@
+<view style="margin-top: 5rem;text-align: center;">
+  <text style="font-size: 2rem;">BLE调试</text>
+</view>
+<view class="button_list">
+  <button bind:tap="BLE_INIT">初始化蓝牙</button>
+  <button bind:tap="BLE_Scan">开始扫描</button>
+  <button bind:tap="BLE_StopScan">停止扫描</button>
+  <button bind:tap="BLE_Connect">连接设备</button>
+  <button bind:tap="BLE_DisConnect">断开连接</button>
+  <button bind:tap="Fan_ON">打开风扇</button>
+  <button bind:tap="Fan_OFF">关闭风扇</button>
+  <button bind:tap="LED_ON">打开灯光</button>
+  <button bind:tap="LED_OFF">关闭灯光</button>
+</view>

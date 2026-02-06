@@ -1,0 +1,141 @@
+<!-- 未连接蓝牙设备 -->
+<view class="All2" wx:if="{{!isBlueTooth}}">
+
+	<view  class="container" bind:tap="BLE_Link">
+		<view class="Link">连接</view>
+
+		<view class='circle'></view>
+
+		<view class='circle'></view>
+
+		<view class='circle'></view>
+
+		<view class='circle'></view>
+
+
+	</view>
+
+</view>
+
+<van-dialog style="z-index: 9999;" id="van-dialog" />
+
+<!-- 已连接蓝牙设备 -->
+<view class="All" wx:if="{{isBlueTooth}}">
+
+	<view class="topBox">
+    	<view class="userBoxItem">
+      		<view class="username">MasTer S</view>
+    	</view>
+  	</view>
+	<view class="TK_Img_Box">
+		<view class="TKImg_box" bind:tap="Close_BLE">
+			<image src="../../static/images/tkimg.png" mode="aspectFit"  class="tkimg"/>
+		</view>
+	</view>
+	<van-notify id="van-notify" />
+	<view class="controlBtn_Box">
+		
+		<view class="Line"></view>
+
+		<view class="controlBtn_Left">
+			<view class="LeftTopBox">
+				<view class="{{ isNoise?'LeftTopBox_1 topBtn1': 'LeftTopBox_1' }}" bindtap="Noise">
+					<i class="iconfont icon-jiangzao"></i>
+				</view>
+				<view class="{{ isAmbient?'LeftTopBox_2 topBtn1': 'LeftTopBox_2' }}" bindtap="Ambient">
+					<i class="iconfont icon-Versant"></i>
+				</view>
+			</view>
+
+			<view class="gn_btn Electricity_Btn">
+				<view class="ElTopBox">
+					<view class="ElTopBox_Text">
+						<view class="ElText_top">
+							<view style="font-size: 40rpx;display: inline-block;font-weight: 700;">2.5</view> h
+						</view>
+						<view class="ElText_down">可续航时间</view>
+					</view>
+					<view class="ElTopBox_Img">
+						<image src="../../static/images/elimg.png" mode="aspectFit" class="elimg"/>
+					</view>
+				</view>
+
+				<view class="ElDownBox">
+					<view class="RemainderEl">剩余电量{{elNum}}%</view>
+					<view class="RemainderEl_box">
+						<view class="RemainderEl_box_in" style="width: {{100 - elNum}}%"></view>
+					</view>
+				</view>
+			</view>
+
+			<view class="gn_btn Light_Btn" bindtap="Light">
+				<i class="{{isLight? 'iconfont icon-rihangdengtoujingdadeng FanImg Light': 'iconfont icon-rihangdengtoujingdadeng FanImg'}}"></i>
+				<view class="Fan_Text">
+					<view class="OpenFan">前视灯</view>
+					<view class="OpenFan_down" wx:if="{{isLight}}">关闭前视灯</view>
+					<view class="OpenFan_down" wx:else>打开前视灯</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="controlBtn_Right">
+
+			<view class="LeftTopBox">
+				<view class="{{ isDisturb?'LeftTopBox_1 topBtn2': 'LeftTopBox_1' }}" bindtap="Disturb" >
+					<i class="iconfont icon-wurao"></i>
+				</view>
+				<view class="{{ ismute?'LeftTopBox_2 topBtn1': 'LeftTopBox_2' }}" bindtap="mute">
+					<i class="iconfont icon-jingyin"></i>
+				</view>
+			</view>
+
+
+			<view class="gn_btn Open_Fan_Btn" bindtap="rotateBox">
+				<i class="{{isRotated? 'iconfont icon-fengshan FanImg rotate': 'iconfont icon-fengshan FanImg'}}"></i>
+				<view class="Fan_Text">
+					<view class="OpenFan">风扇</view>
+					<view class="OpenFan_down" wx:if="{{isRotated}}">关闭风扇</view>
+					<view class="OpenFan_down" wx:else>打开风扇</view>
+				</view>	
+			</view>
+
+			<view class="gn_btn Volume_btn">
+				<view class="ElTopBox">
+					<view class="ElTopBox_Text">
+						<view class="ElText_top">
+							<view style="font-size: 40rpx;display: inline-block;font-weight: 700;">{{volume}}</view> 
+						</view>
+						<view class="ElText_down">当前音量</view>
+					</view>
+					<view class="ElTopBox_Img">
+						<image src="../../static/images/Yl.png" mode="aspectFit" class="elimg"/>
+					</view>
+				</view>
+
+				<view class="ElDownBox" style="margin-top: 60rpx;">
+					<view class="RemainderEl_box" style="margin-bottom: 20rpx;">
+						<view class="RemainderEl_box_in" style="width: {{100 - volume}}%"></view>
+					</view>
+					<view class="controlYLBox">
+						<view class="YLBoxL YLBox" bindtap="downVolume">
+							<van-icon name="arrow-down" />
+						</view>
+						<view class="YLBoxR YLBox" bindtap="upVolume">
+							<van-icon name="arrow-up" />
+						</view>
+					</view>
+				</view>
+			</view>
+			
+		</view>
+
+	</view>
+
+	<van-action-sheet
+    show="{{ show }}"
+    actions="{{ actions }}"
+    bind:close="onClose"
+    bind:select="onSelect"
+  />
+
+</view>

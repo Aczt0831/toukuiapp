@@ -1,0 +1,21 @@
+page {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background-color: wheat;
+  }
+  
+  .scroll-area {
+	flex: 1;
+	overflow-y: hidden;
+  }
+  
+  .intro {
+	padding: 30px;
+	text-align: center;
+  }
+  
+  .button_list button{
+	margin-top: 1rem;
+	height: 3rem;
+  }

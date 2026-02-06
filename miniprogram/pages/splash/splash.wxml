@@ -1,0 +1,6 @@
+<!-- 启动页 - 智安盾品牌展示 -->
+<view class="splash-container">
+  <image class="brand-image" src="/static/images/智安盾.png" mode="aspectFit"></image>
+</view>
+  
+  

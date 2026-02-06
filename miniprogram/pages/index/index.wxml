@@ -1,0 +1,80 @@
+<!-- 轮播图区域 - 展示头盔产品图片 -->
+<view class="Swiper_Box">
+  <swiper class="swiper" 
+    circular="{{indicatorDots}}" 
+    indicator-dots="{{indicatorDots}}" 
+    indicator-color="#99999" 
+    interval="{{interval}}" 
+    duration="{{duration}}" 
+    bindchange="swiperChange">
+    
+
+    <swiper-item class="swiper-item" wx:for="{{swiperList}}" 
+      style="background-color: rgb(255, 255, 255);" 
+      wx:key="index">
+      
+     
+      <view class="Swiper_imgBox">
+        <image src="{{item.bgi}}" mode="widthFix"/>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+
+
+<!-- 产品信息展示区 -->
+<view class="Text_Box">
+  <view>{{ swiperItemList.text }}</view>
+  <view style="font-size: 2vh; font-weight: 500;">{{ swiperItemList.text2 }}</view>
+  <view class="KnowMore" bindtap="showHelmetParams">了解更多</view>
+</view>
+
+<!-- 参数详情面板 - 点击了解更多后显示/隐藏 -->
+<view class="paramsBox" wx:if="{{showParams}}">
+  <!-- 重量参数 -->
+  <view class="paramItem">
+    <view class="paramLabel">重量</view>
+    <view class="paramValue">{{swiperItemList.weight}}</view>
+  </view>
+  
+  <!-- 续航参数 -->
+  <view class="paramItem">
+    <view class="paramLabel">续航时长</view>
+    <view class="paramValue">{{swiperItemList.batteryLife}}</view>
+  </view>
+  
+  <!-- 防护等级 -->
+  <view class="paramItem">
+    <view class="paramLabel">防护等级</view>
+    <view class="paramValue">{{swiperItemList.protectionLevel}}</view>
+  </view>
+  
+  <!-- 材质信息 -->
+  <view class="paramItem">
+    <view class="paramLabel">材质</view>
+    <view class="paramValue">ABS工程塑料</view>
+  </view>
+  
+  <!-- 硬件配置 -->
+  <view class="paramItem">
+    <view class="paramLabel">硬件配置</view>
+    <view class="paramValue">风扇、前视灯</view>
+  </view>
+</view>
+
+<!-- 产品标签区域 -->
+<view class="tagBox">
+  <!-- 左侧标签 -->
+  <view class="tagBox_item" style="text-align: right; transform: translateX(60rpx);">{{swiperItemList.tag1}}</view>
+  <view class="tagBox_item">|</view>
+  <!-- 右侧标签 -->
+  <view class="tagBox_item" style="text-align: left; transform: translateX(-60rpx);">{{swiperItemList.tag2}}</view>
+</view>
+
+<!-- 功能按钮区域 -->
+<view class="BtnBox">
+  <!-- 定制按钮 (暂时为静态显示) -->
+  <view class="btnItem btnItem2">定制您的MasTer</view>
+  <!-- 立即佩戴按钮 -->
+  <view class="btnItem" bindtap="handleWearHelmet">立即佩戴</view>
+</view>

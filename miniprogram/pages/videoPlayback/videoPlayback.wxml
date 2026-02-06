@@ -1,0 +1,48 @@
+<!-- 摄像头视频回放页面 -->
+<view class="video-playback-container">
+  <!-- <view class="video-header">
+    <view class="video-title">摄像头视频回放</view>
+    <view class="back-button" bindtap="goBack">
+      <image src="../../static/images/back.png" mode="aspectFit"></image>
+    </view>
+  </view> -->
+  
+  <!-- 视频播放器区域 -->
+  <view class="video-player-section">
+    <view class="video-placeholder" wx:if="!selectedVideo">
+      <image src="../../static/images/tkimg.png" mode="aspectFit" class="placeholder-image"></image>
+      <view class="placeholder-text">请选择要播放的视频</view>
+    </view>
+    <view class="video-player" wx:else>
+      <video src="{{selectedVideo.url}}" controls poster="{{selectedVideo.thumbnail}}" class="video" />
+      <view class="video-info">
+        <view class="video-name">{{selectedVideo.name}}</view>
+        <view class="video-time">{{selectedVideo.time}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 视频列表 -->
+  <view class="video-list-section">
+    <view class="section-title">历史视频记录</view>
+    <view class="video-list">
+      <view class="video-item" wx:for="{{videos}}" wx:key="id" bindtap="selectVideo" data-id="{{item.id}}">
+        <view class="video-thumbnail">
+          <image src="{{item.thumbnail}}" mode="aspectFill"></image>
+          <view class="video-duration">{{item.duration}}</view>
+        </view>
+        <view class="video-item-info">
+          <view class="video-item-name">{{item.name}}</view>
+          <view class="video-item-date">{{item.date}}</view>
+        </view>
+        <view class="video-item-status" wx:if="{{item.isNew}}">
+          <view class="new-tag">新</view>
+        </view>
+      </view>
+      <view class="loader" wx:if="{{videos.length === 0}}">
+        <text class="loader-text">loading</text>
+        <text class="load"></text>
+      </view>
+    </view>
+  </view>
+</view>

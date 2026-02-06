@@ -1,0 +1,101 @@
+{
+  "pages": [
+    "pages/splash/splash",
+    "pages/index/index",
+    "pages/text/text",
+    "pages/Map/Map",
+    "pages/user/user",
+    "pages/Login/Login",
+    "pages/Register/Register",
+    "pages/Set/Set",
+    "pages/userInfo/userInfo",
+    "pages/find/find",
+    "pages/setnewzp/setnewzp",
+    "pages/zpPage/zpPage",
+    "pages/control/control",
+    "pages/store/store",
+    "pages/maintenance/maintenance",
+    "pages/videoPlayback/videoPlayback",
+    "pages/customerService/customerService",
+    "pages/networkDate/networkDate",
+    "pages/chat/chat",
+    "pages/accountSecurity/accountSecurity",
+    "pages/cart/cart",
+    "pages/notification/notification",
+    "pages/privacy/privacy",
+    "pages/wxLogin/wxLogin",
+    "pages/zpDetail/zpDetail",
+    "pages/maintenance/appointment"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于地图中展示您当前位置"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "usingComponents": {
+    "van-button": "./miniprogram_npm/vant-weapp/button/index",
+    "van-tab": "./miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "./miniprogram_npm/vant-weapp/tabs/index",
+    "van-picker": "./miniprogram_npm/vant-weapp/picker/index",
+    "van-notice-bar": "./miniprogram_npm/vant-weapp/notice-bar/index",
+    "van-tree-select":"./miniprogram_npm/vant-weapp/tree-select/index",
+    "van-tag": "./miniprogram_npm/vant-weapp/tag/index",
+    "van-loading": "./miniprogram_npm/vant-weapp/loading/index",
+    "van-icon": "./miniprogram_npm/vant-weapp/icon/index",
+    "van-popup": "./miniprogram_npm/vant-weapp/popup/index",
+    "van-dialog": "./miniprogram_npm/vant-weapp/dialog/index",
+    "van-action-sheet": "./miniprogram_npm/vant-weapp/action-sheet/index",
+    "van-slider": "./miniprogram_npm/vant-weapp/slider/index",
+    "van-notify": "./miniprogram_npm/vant-weapp/notify/index"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#000000",
+    "backgroundColor": "#fafafa",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "头盔",
+        "iconPath": "static/images/tk1.png",
+        "selectedIconPath": "static/images/tk2.png"
+      },
+      {
+        "pagePath": "pages/Map/Map",
+        "text": "地图",
+        "iconPath": "static/images/map1.png",
+        "selectedIconPath": "static/images/map2.png"
+      },
+      {
+        "pagePath": "pages/control/control",
+        "text": "控制",
+        "iconPath": "static/images/index1.png",
+        "selectedIconPath": "static/images/index2.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "static/images/find.png",
+        "selectedIconPath": "static/images/find2.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "static/images/user1.png",
+        "selectedIconPath": "static/images/user2.png"
+      }
+    ]
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

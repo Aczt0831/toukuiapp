@@ -1,0 +1,328 @@
+/* 我的客服页面样式 */
+.customer-service-container {
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* 页面头部 */
+.service-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120rpx;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.service-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.back-button {
+  position: absolute;
+  left: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 客服信息卡片 */
+.service-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  margin: 20rpx;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.service-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.service-avatar image {
+  width: 100%;
+  height: 100%;
+}
+
+.service-info {
+  flex: 1;
+  margin-left: 30rpx;
+}
+
+.service-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.service-status {
+  display: flex;
+  align-items: center;
+}
+
+.status-indicator {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin-right: 8rpx;
+}
+
+.status-indicator.active {
+  background-color: #25d115;
+}
+
+.status-text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.chat-button {
+  min-width: 160rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  font-size: 40rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 0.4rem;
+  font-weight: bold;
+  border-radius: 30px;
+  text-shadow: 2px 2px 3px rgba(147, 164, 188, 0.5);
+  background: linear-gradient(15deg, #170088ff, #4320aaff, #cc3fadff, #deb93dff, #aef033ff, #8ede3dff, #cc3f47, #ba5f8eff, #007488ff) no-repeat;
+  background-size: 300%;
+  color: #fff;
+  border: none;
+  background-position: left center;
+  box-shadow: 0 30px 10px -20px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+.chat-button:active {
+  background-size: 320%;
+  background-position: right center;
+}
+
+.chat-button:active .chat-icon {
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+.chat-icon {
+  width: 16px;
+  transition: 0.3s ease;
+}
+
+/* 常见问题 */
+.faq-section {
+  background-color: #fff;
+  margin: 20rpx;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 24rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.faq-item {
+  background-color: #fff;
+  border-radius: 0;
+  overflow: hidden;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item.selected {
+  background-color: #4cc2ff;
+  color: #fff;
+}
+
+.faq-item.selected .faq-text {
+  color: #fff;
+}
+
+.faq-item.selected .faq-arrow image {
+  opacity: 1;
+  filter: brightness(0) invert(1);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 24rpx;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:active {
+  background-color: #4cc2ff;
+}
+
+.faq-number {
+  width: 48rpx;
+  height: 48rpx;
+  background-color: #170088ff;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.faq-text {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.faq-arrow {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.faq-arrow image {
+  width: 28rpx;
+  height: 28rpx;
+  opacity: 0.7;
+}
+
+.faq-answer {
+  padding: 0 100rpx 30rpx 92rpx;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+  background-color: #fafafa;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 联系方式 */
+.contact-section {
+  background-color: #fff;
+  margin: 20rpx;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  background-color: #fafafa;
+  border-radius: 12rpx;
+}
+
+.contact-item:active {
+  background-color: #f0f0f0;
+}
+
+.contact-icon {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 12rpx;
+}
+
+.contact-icon image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.contact-info {
+  flex: 1;
+  margin-left: 24rpx;
+}
+
+.contact-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.contact-detail {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 工作时间 */
+.working-hours {
+  margin: 20rpx;
+  padding: 20rpx;
+  text-align: center;
+}
+
+.hours-text {
+  font-size: 26rpx;
+  color: #999;
+}

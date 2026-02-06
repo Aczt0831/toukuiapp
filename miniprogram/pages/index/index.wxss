@@ -1,0 +1,149 @@
+.Swiper_Box {
+	width: 100%;
+	height: 100vh;
+	background-color: #ffffff;
+}
+.swiper {
+	width: 100%;
+	height: 100%;
+}
+.swiper-item {
+	display: flex;
+	align-items: center;
+}
+.Swiper_imgBox {
+  position: relative;
+  width: 60%;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+}
+.Swiper_imgBox image {
+	width: 100%;
+}
+.Text_Box {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 12vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 4vh;
+	font-weight: 700;
+}
+.KnowMore {
+	font-size: 1.5vh;
+	font-weight: 500;
+	height: 2.5vh;
+	line-height: 2.5vh;
+	border-bottom: 1px solid #000;
+	margin-top: 20rpx;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.KnowMore:active {
+	opacity: 0.7;
+	transform: scale(0.95);
+}
+
+/* 核心参数展示样式 */
+.paramsBox {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 25vh;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	background: rgba(255, 255, 255, 0.95);
+	border-radius: 30rpx;
+	padding: 40rpx 30rpx;
+	box-shadow: 0 6rpx 30rpx rgba(0, 0, 0, 0.15);
+	animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-20rpx);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+	}
+}
+
+.paramItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20rpx 0;
+	border-bottom: 1rpx solid #e0e0e0;
+}
+
+.paramItem:last-child {
+	border-bottom: none;
+}
+
+.paramLabel {
+	font-size: 1.8vh;
+	color: #666;
+	font-weight: 500;
+}
+
+.paramValue {
+	font-size: 1.8vh;
+	color: #333;
+	font-weight: 700;
+}
+.tagBox {
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 23.5vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2vh;
+}
+.tagBox_item {
+	flex: 1;
+	text-align: center;
+	font-weight: 700;
+}
+.BtnBox {
+	position: absolute;
+	bottom: 5vh;
+	width: 100%;
+}
+.btnItem {
+	width: 80%;
+	margin: 30rpx auto;
+	text-align: center;
+	height: 90rpx;
+	line-height: 90rpx;
+	border-radius: 30rpx;
+	font-size: 1.7vh;
+	border: 2rpx solid #000;
+	transition: all 0.2s ease;
+	transform-origin: center;
+}
+
+.btnItem:active {
+	transform: scale(0.95);
+	opacity: 0.8;
+}
+.btnItem2 {
+	color: #000;
+}
+
+/* 为第二个按钮添加背景色，使其与第一个按钮形成对比 */
+.BtnBox .btnItem:last-child {
+	background-color: #000;
+	color: #fff;
+}

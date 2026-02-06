@@ -1,0 +1,80 @@
+<!-- 头盔气囊保养页面 -->
+<view class="maintenance-container">
+  <!-- 列表页内容 -->
+  <view wx:if="{{!showDetail}}" class="list-container">  
+    <!-- <view class="maintenance-header">
+      <view class="maintenance-title">头盔气囊保养</view>
+      <view class="back-button" bindtap="goBack">
+        <image src="../../static/images/back.png" mode="aspectFit"></image>
+      </view>
+    </view>   -->
+    <!-- 保养知识卡片 -->
+    <view class="knowledge-cards">
+      <view class="knowledge-card" wx:for="{{maintenanceKnowledge}}" wx:key="id" 
+            bindtap="viewMaintenanceDetail" data-id="{{item.id}}">
+        <view class="card-header">
+          <view class="card-title">{{item.title}}</view>
+          <view class="card-tag">{{item.category}}</view>
+        </view>
+        <view class="card-content">
+          <image src="{{item.image}}" mode="aspectFill" class="card-image"></image>
+          <view class="card-text">了解如何正确{{item.title}}，{{item.content.split('\n')[0]}}...</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 保养预约 -->
+    <view class="appointment-section">
+      <view class="section-title">专业保养服务</view>
+      <button class="appointment-button" bindtap="makeAppointment">预约保养服务</button>
+    </view>
+  </view>
+  
+  <!-- 详情页内容 -->
+   <view wx:if="{{showDetail}}" class="detail-container"> 
+    <!-- <view class="detail-header">
+      <view class="detail-back-button" bindtap="closeDetail">
+        <image src="../../static/images/back.png" mode="aspectFit"></image>
+      </view>
+      <view class="detail-title">保养知识详情</view>
+    </view> --> 
+    
+    <scroll-view scroll-y class="detail-content">
+      <view class="knowledge-detail">
+        <view class="detail-info">
+          <view class="detail-knowledge-title">{{currentKnowledge.title}}</view>
+          <view class="detail-knowledge-category">{{currentKnowledge.category}}</view>
+        </view>
+        
+        <view class="detail-image-container">
+          <image src="{{currentKnowledge.image}}" mode="aspectFit" class="detail-image"></image>
+        </view>
+        
+        <view class="detail-knowledge-content">
+          <view wx:for="{{currentKnowledge.contentArray}}" wx:key="index" class="content-line">
+            {{item}}
+          </view>
+        </view>
+        
+        <view class="tips-container">
+          <view class="tips-title">温馨提示</view>
+          <view class="tips-content">{{currentKnowledge.tips}}</view>
+        </view>
+      </view>
+    </scroll-view>
+    
+    <view class="detail-actions">
+      <view class="action-button" bindtap="favoriteKnowledge">
+        <text class="action-icon">❤</text>
+        <text class="action-text">收藏</text>
+      </view>
+      <view class="action-button" bindtap="shareKnowledge">
+        <text class="action-icon">↗</text>
+        <text class="action-text">分享</text>
+      </view>
+      <view class="action-button primary" bindtap="makeAppointment">
+        <text class="action-text primary-text">预约保养</text>
+      </view>
+    </view>
+  </view>
+</view>

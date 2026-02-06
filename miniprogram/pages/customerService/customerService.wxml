@@ -1,0 +1,85 @@
+<!-- 我的客服页面 -->
+<view class="customer-service-container">
+  <!-- <view class="service-header">
+    <view class="service-title">我的客服</view>
+    <view class="back-button" bindtap="goBack">
+      <image src="../../static/images/back.png" mode="aspectFit"></image>
+    </view> -->
+  <!-- </view> -->
+  
+  <!-- 客服信息卡片 -->
+  <view class="service-card">
+    <view class="service-avatar">
+      <image src="../../static/images/tkimg.png" mode="aspectFit"></image>
+    </view>
+    <view class="service-info">
+      <view class="service-name">智安盾客服</view>
+      <view class="service-status">
+        <view class="status-indicator active"></view>
+        <view class="status-text">在线</view>
+      </view>
+    </view>
+    <button class="chat-button" bindtap="startChat" size="mini">
+      立即咨询
+      <icon type="chat" size="23" color="#f09f33" class="chat-icon"/>
+    </button>
+  </view>
+  
+  <!-- 常见问题 -->
+  <view class="faq-section">
+    <view class="section-title">常见问题</view>
+    <view class="faq-list">
+      <view class="faq-item {{selectedFAQ === item.id ? 'selected' : ''}}" wx:for="{{faqList}}" wx:key="id" bindtap="toggleFAQ" data-id="{{item.id}}">
+        <view class="faq-question">
+          <view class="faq-number">{{index + 1}}</view>
+          <view class="faq-text">{{item.question}}</view>
+          <view class="faq-arrow {{expandedFAQ === item.id ? 'expanded' : ''}}">
+            <image src="../../static/images/arrow.png" mode="aspectFit"></image>
+          </view>
+        </view>
+        <view class="faq-answer" wx:if="{{expandedFAQ === item.id}}">
+          {{item.answer}}
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 联系方式 -->
+  <view class="contact-section">
+    <view class="section-title">其他联系方式</view>
+    <view class="contact-methods">
+      <view class="contact-item" bindtap="makePhoneCall">
+        <view class="contact-icon phone-icon">
+          <image src="../../static/images/phone.png" mode="aspectFit"></image>
+        </view>
+        <view class="contact-info">
+          <view class="contact-title">电话咨询</view>
+          <view class="contact-detail">400-123-4567</view>
+        </view>
+      </view>
+      <view class="contact-item" bindtap="sendEmail">
+        <view class="contact-icon email-icon">
+          <image src="../../static/images/Mail.png" mode="aspectFit"></image>
+        </view>
+        <view class="contact-info">
+          <view class="contact-title">邮件咨询</view>
+          <view class="contact-detail">service@zhian.com</view>
+        </view>
+      </view>
+      <view class="contact-item" bindtap="viewOfficialAccount">
+        <view class="contact-icon wx-icon">
+          <image src="../../static/images/wechat.png" mode="aspectFit"></image>
+        </view>
+        <view class="contact-info">
+          <view class="contact-title">公众号</view>
+          <view class="contact-detail">智安盾头盔</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 工作时间 -->
+  <view class="working-hours">
+    <view class="hours-text">工作时间：周一至周日 9:00-21:00</view>
+  </view>
+</view>

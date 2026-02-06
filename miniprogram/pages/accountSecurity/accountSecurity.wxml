@@ -1,0 +1,82 @@
+<view class="container">
+  <!-- 页面头部 -->
+  <view class="header">
+    <view class="back-btn" bindtap="navigateBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <view class="page-title">账号安全</view>
+    <view class="right-space"></view>
+  </view>
+
+  <!-- 账号信息 -->
+  <view class="account-info">
+    <view class="account-item">
+      <view class="info-label">用户ID</view>
+      <view class="info-value">{{id || '未登录'}}</view>
+    </view>
+    <view class="account-item">
+      <view class="info-label">用户名</view>
+      <view class="info-value">{{username || '未设置'}}</view>
+    </view>
+  </view>
+
+  <!-- 安全选项列表 -->
+  <view class="security-list">
+    <view class="security-item" bindtap="changePassword">
+      <view class="item-left">
+        <text class="item-icon">🔐</text>
+        <text class="item-label">修改密码</text>
+      </view>
+      <view class="item-right">
+        <text class="item-desc">{{passwordStatus}}</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+
+    <view class="security-item" bindtap="bindPhone">
+      <view class="item-left">
+        <text class="item-icon">📱</text>
+        <text class="item-label">绑定手机号</text>
+      </view>
+      <view class="item-right">
+        <text class="item-desc">{{phoneStatus}}</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+
+    <view class="security-item" bindtap="loginHistory">
+      <view class="item-left">
+        <text class="item-icon">📋</text>
+        <text class="item-label">登录历史</text>
+      </view>
+      <view class="item-right">
+        <text class="item-desc">{{lastLoginInfo}}</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+
+    <view class="security-item" bindtap="privacySettings">
+      <view class="item-left">
+        <text class="item-icon">⚙️</text>
+        <text class="item-label">隐私设置</text>
+      </view>
+      <view class="item-right">
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 提示信息 -->
+  <view class="tips-section">
+    <text class="tips-title">安全提示</text>
+    <text class="tips-content">• 请定期修改密码以保障账号安全
+• 请勿向他人泄露您的账号信息
+• 如有异常登录，请及时联系客服</text>
+  </view>
+
+  <!-- 客服入口 -->
+  <view class="customer-service" bindtap="contactCustomerService">
+    <text class="service-text">遇到问题？联系客服</text>
+    <text class="service-arrow">›</text>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "通知设置",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#f8f8f8",
+  "usingComponents": {
+    "van-switch": "./../../miniprogram_npm/vant-weapp/switch/index"
+  }
+}

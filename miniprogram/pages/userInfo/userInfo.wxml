@@ -1,0 +1,107 @@
+<view class="container">
+  <!-- 用户信息头部 -->
+  <view class="user-header">
+    <view class="avatar-container" bindtap="changeTx">
+      <image 
+        src="{{ userinfo[0].usertx? 'data:image/jpeg;base64,' + userinfo[0].usertx: '../../static/images/userempty.png' }}" 
+        mode="aspectFill" 
+        class="avatar"
+      />
+      <view class="avatar-edit">
+        <text class="edit-text">点击更换</text>
+      </view>
+    </view>
+    
+    <view class="user-basic-info">
+      <view class="username" bindtap="changeName">
+        <text class="name-text">{{userinfo[0].username}}</text>
+        <text class="edit-icon">✎</text>
+      </view>
+      <view class="user-id">ID: {{id || '未登录'}}</view>
+    </view>
+  </view>
+
+  <!-- 个人信息列表 -->
+  <view class="info-list">
+    <view class="info-item" bindtap="changeStyList">
+      <view class="info-label">个性签名</view>
+      <view class="info-value">
+        <text class="value-text">{{userinfo[0].styleList? userinfo[0].styleList : "个性签名~"}}</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+
+    <!-- 添加更多用户信息项 -->
+    <view class="info-item">
+      <view class="info-label">账户创建时间</view>
+      <view class="info-value">
+        <text class="value-text">{{userinfo[0].createTime || ''}}</text>
+      </view>
+    </view>
+
+    <view class="info-item">
+      <view class="info-label">最后登录时间</view>
+      <view class="info-value">
+        <text class="value-text">{{userinfo[0].lastLoginTime || ''}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮区域 -->
+  <view class="action-buttons">
+    <view class="action-btn primary-btn" bindtap="editProfile">编辑个人资料</view>
+    <view class="action-btn secondary-btn" bindtap="accountSecurity">账号安全</view>
+    <view class="action-btn danger-btn" bindtap="logout">退出登录</view>
+  </view>
+
+  <!-- 修改用户名弹窗 -->
+  <van-action-sheet
+    show="{{ show2 }}" 
+    bind:close="onClose2"
+    title="修改用户名"
+    round
+    duration="300"
+  >
+    <view class="action-content">
+      <textarea 
+        value="{{stylist2}}" 
+        placeholder="请输入修改后的用户名" 
+        bindinput="ListInput2" 
+        class="textarea-input"
+        maxlength="20"
+        auto-height
+      ></textarea>
+      <view class="char-count">{{stylist2.length}}/20</view>
+      <view class="button-group">
+        <view class="cancel-btn" bindtap="onClose2">取消</view>
+        <view class="confirm-btn" bindtap="baocun2">保存</view>
+      </view>
+    </view>
+  </van-action-sheet>
+
+  <!-- 修改个性签名弹窗 -->
+  <van-action-sheet
+    show="{{ show }}" 
+    bind:close="onClose"
+    title="修改个性签名"
+    round
+    duration="300"
+  >
+    <view class="action-content">
+      <textarea 
+        value="{{stylist}}" 
+        placeholder="展示自己的个性" 
+        bindinput="ListInput" 
+        class="textarea-input"
+        maxlength="50"
+        auto-height
+      ></textarea>
+      <view class="char-count">{{stylist.length}}/50</view>
+      <view class="button-group">
+        <view class="cancel-btn" bindtap="onClose">取消</view>
+        <view class="confirm-btn" bindtap="baocun">保存</view>
+      </view>
+    </view>
+  </van-action-sheet>
+
+</view>

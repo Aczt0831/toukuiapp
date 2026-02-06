@@ -1,0 +1,66 @@
+<!-- 微信通行证 - 登录页面 -->
+<view class="container">
+  <!-- 顶部装饰区域 -->
+  <view class="top-decoration">
+    <view class="decoration-circle circle-1"></view>
+    <view class="decoration-circle circle-2"></view>
+  </view>
+  
+  <!-- 主要内容区域 -->
+  <view class="main-content">
+    <!-- 页面标题 -->
+    <view class="header">
+      <text class="title">微信一键登录</text>
+      <text class="subtitle">安全快捷登录</text>
+    </view>
+    
+    <!-- 加载提示 -->
+    <view class="loading-container" wx:if="{{isLoading}}">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">正在跳转到微信登录...</text>
+    </view>
+    
+    <!-- 登录入口 -->
+    <view class="login-entry" wx:else>
+      <!-- 微信图标容器 -->
+      <view class="wechat-icon-container">
+        <view class="wechat-icon">
+          <image src="../../static/images/wx.png" mode="aspectFit" class="icon"></image>
+        </view>
+        <view class="icon-glow"></view>
+      </view>
+      
+      <!-- 欢迎文本 -->
+      <view class="welcome-section">
+        <text class="welcome-text">欢迎使用微信登录</text>
+        <text class="welcome-desc">一键登录，安全便捷</text>
+      </view>
+      
+      <!-- 登录按钮 -->
+      <button class="login-btn" bindtap="handleWechatLogin" disabled="{{isLoading}}">
+        <view class="btn-content">
+          <image src="../../static/images/wx.png" mode="aspectFit" class="btn-icon"></image>
+          <text class="btn-text">微信登录</text>
+        </view>
+      </button>
+      
+      <!-- 隐私协议 -->
+      <view class="privacy-notice">
+        <text class="privacy-text">登录即表示同意</text>
+        <text class="privacy-link" bindtap="openPrivacyPolicy">《隐私政策》</text>
+        <text class="privacy-text">和</text>
+        <text class="privacy-link" bindtap="openUserAgreement">《用户协议》</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部装饰 -->
+  <view class="bottom-decoration">
+    <view class="decoration-wave"></view>
+  </view>
+  
+  <!-- 自动跳转提示（如果启用自动跳转） -->
+  <view class="auto-redirect" wx:if="{{!isLoading && autoRedirect}}">
+    <text class="redirect-text">页面将自动跳转到登录入口...</text>
+  </view>
+</view>

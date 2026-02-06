@@ -1,0 +1,161 @@
+page {
+	background-color: #F5F5F5;
+}
+.All {
+	width: 100%;
+	  padding-top: 20rpx;
+	  padding-bottom: 20rpx;
+}
+
+.userBox {
+	background-color: #ffffff;
+	padding: 40rpx 0;
+	margin-bottom: 20rpx;
+}
+
+.TxBox {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20rpx 0;
+}
+
+.TxImgBox {
+	width: 160rpx;
+	height: 160rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-bottom: 20rpx;
+	background-color: #f0f0f0;
+	box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.TxImgBox_img {
+	width: 100%;
+	height: 100%;
+}
+
+.DZBox {
+	font-size: 36rpx;
+	font-weight: 600;
+	margin-top: 20rpx;
+	color: #333;
+	letter-spacing: 2rpx;
+}
+
+.NameBox {
+	text-align: center;
+	margin-top: 10rpx;
+}
+
+.UserName {
+	font-weight: 600;
+	font-size: 38rpx;
+	color: #333;
+	margin-bottom: 8rpx;
+}
+
+.QmBox {
+	font-size: 28rpx;
+	color: #888;
+	line-height: 1.5;
+	padding: 0 40rpx;
+	word-break: break-all;
+}
+.chooseBox {
+	width: 100%;
+	padding: 0 30rpx;
+	box-sizing: border-box;
+}
+
+.chooseBox_item {
+	width: 100%;
+	height: 92rpx;
+	border-radius: 16rpx;
+	margin: 12rpx 0;
+	background-color: #ffffff;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 30rpx;
+	box-sizing: border-box;
+}
+
+.chooseBox_item_text {
+	font-size: 32rpx;
+	color: #333;
+	font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.chooseBox_item_jiantou {
+	color: #ccc;
+	font-size: 24rpx;
+	font-weight: 500;
+}
+
+/* 作品管理特殊样式 */
+.chooseBox_item2 {
+	height: auto;
+	padding-bottom: 20rpx;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.chooseBox_item_text2 {
+	margin: 20rpx 0;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.chooseBox_item_jiantou2 {
+	position: absolute;
+	top: 30rpx;
+	right: 30rpx;
+	transform: none;
+}
+
+.chooseBox_item_item {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	padding-top: 10rpx;
+}
+
+.chooseBox_item_item_item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.chooseBox_item_item_img {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 70rpx;
+	height: 70rpx;
+	background-color: #f8f8f8;
+	border-radius: 14rpx;
+}
+
+.chooseBox_item_item_text {
+	font-size: 26rpx;
+	color: #666;
+	margin-top: 12rpx;
+}
+.chooseBox_item_item_img {
+	width: 70rpx;
+	height: 70rpx;
+}
+.chooseBox_item_item_img image {
+	width: 100%;
+	height: 100%;
+}
+.chooseBox_item_item_text {
+	font-size: 25rpx;
+	margin-top: 10rpx;
+	color: #8d8d8d;
+}

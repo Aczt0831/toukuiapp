@@ -1,0 +1,48 @@
+<view class="All">
+
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="header-title">发布新作品</text>
+  </view>
+
+  <!-- 添加图片区域 -->
+  <view class="ImgBox">
+    <view class="ImgBox_item" bindtap="postImg" wx:if="{{!loading && !disabled}}">
+      <image src="{{addImg ? addImg : '../../static/images/add.png'}}" mode="aspectFill"/>
+      <view class="img-hint" wx:if="{{!addImg}}">点击添加图片</view>
+    </view>
+    <view class="ImgBox_item" wx:else>
+      <image src="{{addImg ? addImg : '../../static/images/add.png'}}" mode="aspectFill"/>
+    </view>
+  </view>
+
+  <!-- 作品标题 -->
+  <view class="addText">
+    <view class="input-label">作品标题</view>
+    <view class="input-wrapper">
+      <input type="text" placeholder="请输入作品标题" bindinput="textinput" value="{{zptext}}" class="addTextInput" disabled="{{disabled}}"/>
+      <text class="char-count">{{zptext.length}}/{{maxTitleLength}}</text>
+    </view>
+  </view>
+
+  <!-- 作品内容 -->
+  <view class="addContent">
+    <view class="input-label">作品内容</view>
+    <view class="textarea-wrapper">
+      <textarea placeholder="记录下美好的一刻" class="contentText" bindinput="contentinput" value="{{zpcontent}}" disabled="{{disabled}}"/>
+      <text class="char-count">{{zpcontent.length}}/{{maxContentLength}}</text>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="postBtn" bindtap="postAll" wx:if="{{!loading && !disabled}}">发布</view>
+  <view class="postBtn disabled" wx:else>{{disabled ? '请先登录' : '发布中...'}}</view>
+
+  <!-- 加载遮罩 -->
+  <view class="loading-mask" wx:if="{{loading}}">
+    <view class="loading-content">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">正在发布...</text>
+    </view>
+  </view>
+</view>

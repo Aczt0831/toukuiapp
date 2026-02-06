@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "车友圈",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#f8f8f8",
+  "usingComponents": {
+    "van-icon": "../../miniprogram_npm/vant-weapp/icon/index"
+  }
+}

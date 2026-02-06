@@ -1,0 +1,100 @@
+<view class="page-container">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="header-title">隐私设置</text>
+  </view>
+  
+  <!-- 设置列表 -->
+  <view class="settings-section">
+    <!-- 数据权限设置 -->
+    <view class="settings-group">
+      <view class="group-title">数据权限</view>
+      
+      <view class="setting-item">
+        <view class="setting-title">允许收集位置信息</view>
+        <van-switch 
+          size="36" 
+          checked="{{locationPermission}}" 
+          active-color="#1aad19" 
+          bind:change="onLocationToggle"
+        />
+      </view>
+      
+      <view class="setting-item">
+        <view class="setting-title">允许收集使用数据</view>
+        <van-switch 
+          size="36" 
+          checked="{{usageDataPermission}}" 
+          active-color="#1aad19" 
+          bind:change="onUsageDataToggle"
+        />
+      </view>
+    </view>
+    
+    <!-- 个人信息展示设置 -->
+    <view class="settings-group">
+      <view class="group-title">个人信息</view>
+      
+      <view class="setting-item">
+        <view class="setting-title">公开我的头盔状态</view>
+        <van-switch 
+          size="36" 
+          checked="{{showHelmetStatus}}" 
+          active-color="#1aad19" 
+          bind:change="onHelmetStatusToggle"
+        />
+      </view>
+      
+      <view class="setting-item">
+        <view class="setting-title">允许他人查看我的位置</view>
+        <van-switch 
+          size="36" 
+          checked="{{showLocation}}" 
+          active-color="#1aad19" 
+          bind:change="onShowLocationToggle"
+        />
+      </view>
+    </view>
+    
+    <!-- 隐私政策相关 -->
+    <view class="settings-group">
+      <view class="group-title">隐私政策</view>
+      
+      <view class="setting-item" bindtap="viewPrivacyPolicy">
+        <view class="setting-title">隐私政策</view>
+        <van-icon name="arrow" size="28rpx" class="setting-arrow" />
+      </view>
+      
+      <view class="setting-item" bindtap="viewTerms">
+        <view class="setting-title">用户协议</view>
+        <van-icon name="arrow" size="28rpx" class="setting-arrow" />
+      </view>
+      
+      <view class="setting-item" bindtap="viewDataUsage">
+        <view class="setting-title">数据使用说明</view>
+        <van-icon name="arrow" size="28rpx" class="setting-arrow" />
+      </view>
+    </view>
+    
+    <!-- 数据管理 -->
+    <view class="settings-group">
+      <view class="group-title">数据管理</view>
+      
+      <view class="setting-item" bindtap="clearCache">
+        <view class="setting-title">清除缓存</view>
+        <view class="setting-value">{{cacheSize || '0KB'}}</view>
+        <van-icon name="arrow" size="28rpx" class="setting-arrow" />
+      </view>
+      
+      <view class="setting-item" bindtap="exportUserData">
+        <view class="setting-title">导出个人数据</view>
+        <van-icon name="arrow" size="28rpx" class="setting-arrow" />
+      </view>
+    </view>
+  </view>
+  
+  <!-- 隐私说明 -->
+  <view class="privacy-tip">
+    <text class="tip-text">我们重视您的隐私，所有设置将严格按照隐私政策执行</text>
+  </view>
+</view>

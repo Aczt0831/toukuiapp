@@ -1,0 +1,299 @@
+/* 头盔气囊保养页面样式 */
+.maintenance-container {
+  padding-bottom: 60rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+/* 列表页内容 */
+.list-container {
+  min-height: 100vh;
+}
+
+/* 页面头部 */
+.maintenance-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 120rpx;
+  background-color: #ffffff;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.maintenance-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.back-button {
+  position: absolute;
+  left: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 知识卡片区域 */
+.knowledge-cards {
+  padding: 30rpx 20rpx;
+}
+
+.knowledge-card {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+.knowledge-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 1rpx 5rpx rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.card-tag {
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 15rpx;
+  background-color: #e6f7ff;
+  color: #1890ff;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.card-text {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 42rpx;
+}
+
+/* 预约保养区域 */
+.appointment-section {
+  padding: 30rpx 20rpx;
+  background-color: #ffffff;
+  margin-top: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.appointment-button {
+  width: 100%;
+  height: 90rpx;
+  background-color: #1890ff;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 45rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.appointment-button:active {
+  background-color: #40a9ff;
+}
+
+/* 详情页样式 */
+.detail-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+  background-color: #ffffff;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  padding: 0 30rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.detail-back-button {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-back-button image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.detail-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-left: 30rpx;
+}
+
+.detail-content {
+  flex: 1;
+  padding: 140rpx 20rpx 120rpx;
+  background-color: #f8f8f8;
+}
+
+.knowledge-detail {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.detail-info {
+  margin-bottom: 30rpx;
+}
+
+.detail-knowledge-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10rpx;
+}
+
+.detail-knowledge-category {
+  font-size: 26rpx;
+  color: #1890ff;
+  background-color: #e6f7ff;
+  padding: 6rpx 16rpx;
+  border-radius: 15rpx;
+  display: inline-block;
+}
+
+.detail-image-container {
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.detail-image {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 10rpx;
+  background-color: #f5f5f5;
+}
+
+.detail-knowledge-content {
+  margin-bottom: 30rpx;
+}
+
+.content-line {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+/* 提示框样式 */
+.tips-container {
+  background-color: #fff7e6;
+  border-left: 6rpx solid #fa8c16;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+
+.tips-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #d4380d;
+  margin-bottom: 10rpx;
+}
+
+.tips-content {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 44rpx;
+}
+
+/* 底部操作栏 */
+.detail-actions {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background-color: #ffffff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.action-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 2rpx solid #f0f0f0;
+}
+
+.action-button:last-child {
+  border-right: none;
+}
+
+.action-icon {
+  font-size: 36rpx;
+  color: #666666;
+  margin-bottom: 4rpx;
+}
+
+.action-text {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.action-button.primary {
+  background-color: #1890ff;
+}
+
+.action-text.primary-text {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 28rpx;
+}
